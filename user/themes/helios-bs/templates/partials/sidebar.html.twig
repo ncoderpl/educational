@@ -1,0 +1,52 @@
+<div class="offcanvas-lg offcanvas-start hx-sidebar" tabindex="-1" id="hxSidebar" aria-label="Nawigacja">
+    <div class="offcanvas-header d-lg-none">
+        <span class="hx-brand"><span class="hx-logo"></span>{{ site.title }}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#hxSidebar" aria-label="Zamknij"></button>
+    </div>
+    <div class="offcanvas-body flex-column">
+        <nav class="hx-nav" id="hxNav">
+            {% for section in pages.children.visible %}
+                {% if not section.home %}
+                    {% set is_branch_active = section.active or section.activeChild %}
+
+                    {% if section.children.visible.count %}
+                        <details class="hx-group {{ is_branch_active ? 'is-active-branch' : '' }}" {{ is_branch_active ? 'open' : '' }}>
+                            <summary class="hx-group-title">
+                                <span>{{ section.menu }}</span>
+                                <svg class="hx-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                            </summary>
+                            <ul class="list-unstyled mb-0 hx-group-list">
+                                <li><a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}"> Lista wpisów </a></li>
+                                {% for child in section.children.visible %}
+                                    {% if child.children.visible.count %}
+                                        <li>
+                                            <details class="hx-subgroup" {{ child.active or child.activeChild ? 'open' : '' }}>
+                                                <summary class="hx-nav-link hx-sub-summary {{ child.active ? 'active' : '' }}">
+                                                    <span>{{ child.menu }}</span>
+                                                    <svg class="hx-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+                                                </summary>
+                                                <ul class="list-unstyled hx-nav-sub">
+                                                    <li><a class="hx-nav-link {{ child.active ? 'active' : '' }}" href="{{ child.url }}"> Lista wpisów </a></li>
+                                                    {% for sub in child.children.visible %}
+                                                        <li><a class="hx-nav-link {{ sub.active ? 'active' : '' }}" href="{{ sub.url }}">{{ sub.menu }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </details>
+                                        </li>
+                                    {% else %}
+                                        <li><a class="hx-nav-link {{ child.active ? 'active' : '' }}" href="{{ child.url }}">{{ child.menu }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </details>
+                    {% else %}
+                        {# Pojedynczy kurs/sekcja bez podstron #}
+                        <div class="hx-group {{ is_branch_active ? 'is-active-branch' : '' }}">
+                            <a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}">{{ section.menu }}</a>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </nav>
+    </div>
+</div>

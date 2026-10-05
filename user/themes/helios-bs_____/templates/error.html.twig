@@ -1,0 +1,11 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+<main class="hx-hero text-center" style="min-height:80vh;display:flex;align-items:center">
+    <div class="container">
+        <h1 class="hx-hero-title">404</h1>
+        <p class="hx-hero-sub">Nie znaleziono strony.</p>
+        <a href="{{ base_url == '' ? '/' : base_url }}" class="btn hx-btn-primary mt-3">Wróć do dokumentacji</a>
+    </div>
+</main>
+{% endblock %}

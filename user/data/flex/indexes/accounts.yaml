@@ -1,0 +1,24 @@
+version: '1.2'
+timestamp: 1791226540
+count: 4
+index:
+  isi:
+    storage_key: isi
+    storage_timestamp: 1791226534
+    key: isi
+    email: isi@isi
+  kamil:
+    storage_key: kamil
+    storage_timestamp: 1791209989
+    key: kamil
+    email: kamilzuk@gmail.com
+  lsk:
+    storage_key: lsk
+    storage_timestamp: 1791211242
+    key: lsk
+    email: lsk@lsk
+  mysql:
+    storage_key: mysql
+    storage_timestamp: 1791211484
+    key: mysql
+    email: mysql@mysql

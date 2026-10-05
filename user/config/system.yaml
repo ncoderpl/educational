@@ -1,0 +1,21 @@
+timezone: null
+custom_base_url: null
+pages:
+  theme: helios-bs
+  append_url_extension: null
+  redirect_default_code: '302'
+cache:
+  redis:
+    socket: null
+errors:
+  display: 1
+debugger:
+  token: null
+images:
+  cls:
+    retina_scale: '1'
+gpm:
+  verify_peer: true
+updates:
+  safe_upgrade: true
+  safe_upgrade_snapshot_limit: 5

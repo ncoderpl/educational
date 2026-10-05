@@ -1,0 +1,23 @@
+{% set form = form ?? grav.login.form %}
+
+<form method="post" action="{{ uri.route(true) }}" class="hx-login-form">
+    {# Renderowanie pól formularza wygenerowanych przez wtyczkę Login #}
+    {% for field in form.fields %}
+        {% if field.type %}
+            {% set value = form.value(field.name) %}
+            <div class="form-field form-field-{{ field.type }} mb-3">
+                {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] ignore missing %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {# Bezpieczne tokeny i ukryte pola wymagane przez Form/Login #}
+    {{ form.renderHiddenFields()|raw }}
+    {{ nonce_field('login-form', 'login-form-nonce')|raw }}
+
+    <div class="form-actions mt-3">
+        <button type="submit" name="task" value="login.login" class="btn hx-btn-primary w-100 py-2">
+            Zaloguj się
+        </button>
+    </div>
+</form>

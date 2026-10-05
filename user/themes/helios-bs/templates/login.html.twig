@@ -1,0 +1,47 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+    <div class="hx-shell">
+        {% include 'partials/sidebar.html.twig' %}
+
+        <main class="hx-main d-flex flex-column min-vh-100">
+            <div class="hx-login-wrapper flex-grow-1">
+                <div class="hx-login-card">
+                    <div class="text-center mb-4">
+                        <div class="hx-logo mx-auto mb-3" style="width: 38px; height: 38px; border-radius: 10px;"></div>
+                        <h1 class="hx-login-title">{{ page.title ?: 'Logowanie' }}</h1>
+                        <p class="hx-login-subtitle">Wprowadź dane dostępowe, aby przejść do zasobu</p>
+                    </div>
+
+                    <div class="hx-alerts">
+                        {% include 'partials/messages.html.twig' %}
+                    </div>
+
+                    {% if grav.user.authenticated %}
+                        <div class="alert alert-info text-center mb-4">
+                            Zalogowano jako: <strong>{{ grav.user.fullname ?: grav.user.username }}</strong>
+                        </div>
+
+                        <a href="{{ base_url_absolute }}" class="btn hx-btn-primary w-100 mb-2 text-center d-block">
+                            Strona główna
+                        </a>
+
+                        <a
+                            href="{{ uri.addNonce(base_url_relative ~ uri.path ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce') }}"
+                            class="btn hx-btn-ghost w-100 text-center d-block"
+                        >
+                            Wyloguj się
+                        </a>
+                    {% else %}
+                        {# Osadzenie oryginalnego formularza Grava z obsługą tokenów i sesji #}
+                        {% include 'partials/login-form.html.twig' %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="container" style="max-width:1050px">
+                {% include 'partials/footer.html.twig' %}
+            </div>
+        </main>
+    </div>
+{% endblock %}

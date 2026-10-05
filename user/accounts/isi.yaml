@@ -1,0 +1,20 @@
+state: enabled
+email: isi@isi
+fullname: isi
+title: ''
+access:
+  site:
+    login: true
+    isi: true
+    lsk: false
+    mysql: false
+  admin:
+    login: false
+    super: false
+hashed_password: $2y$12$xk77eDz6H/eeiz5.PmXvcex8Vp3/REJ79kMqdtwV8e/FgQUlNhX92
+created: 1791211032
+modified: 1791226554
+language: ''
+content_editor: ''
+groups: {  }
+api_tokens_valid_after: 1791226554

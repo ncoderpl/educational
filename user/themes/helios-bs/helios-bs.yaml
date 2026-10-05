@@ -1,0 +1,20 @@
+enabled: true
+
+# Wersja wyświetlana obok logo (np. "2.x (Stable)"). Puste = ukryte, o ile nie ma listy wersji.
+current_version: ''
+versions: []
+#  - { title: '2.x (Stable)', url: '/2.x' }
+#  - { title: '1.7 (Legacy)', url: '/1.7' }
+
+# Linki w pasku górnym i stopce
+header_links: []
+#  - { title: 'Strona główna', url: 'https://example.com' }
+#  - { title: 'GitHub', url: 'https://github.com/...' }
+footer_links: []
+
+copyright: ''
+
+# Bazowy adres do edycji stron, np.:
+# https://github.com/twoj-user/repo/blob/main/user/pages
+# Do niego doklejana jest ścieżka strony, np. /01.basics/02.installation/default.md
+github_edit_url: ''

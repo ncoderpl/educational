@@ -1,0 +1,21 @@
+{% set messages = grav.messages.fetch %}
+{% if messages|length %}
+    <div class="hx-messages mb-3">
+        {% for message in messages %}
+            {% set msg_type = message.scope ?: 'info' %}
+            {% if msg_type == 'error' %}
+                {% set alert_class = 'alert-danger' %}
+            {% elseif msg_type == 'warning' %}
+                {% set alert_class = 'alert-warning' %}
+            {% elseif msg_type == 'success' %}
+                {% set alert_class = 'alert-success' %}
+            {% else %}
+                {% set alert_class = 'alert-info' %}
+            {% endif %}
+
+            <div class="alert {{ alert_class }} py-2 px-3 mb-2" role="alert" style="font-size: 0.88rem; border-radius: 8px;">
+                {{ message.message|raw }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}

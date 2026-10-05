@@ -1,0 +1,45 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block body %}
+<div class="hx-shell">
+    {% include 'partials/sidebar.html.twig' %}
+
+    <main class="hx-main">
+        <section class="hx-hero text-center">
+            <div class="hx-hero-glow"></div>
+            <div class="container position-relative">
+                {% if page.header.badge %}<span class="hx-badge">{{ page.header.badge }}</span>{% endif %}
+                <h1 class="hx-hero-title">{{ page.header.hero_title ?: page.title }}</h1>
+                {% if page.header.hero_subtitle %}<p class="hx-hero-sub">{{ page.header.hero_subtitle }}</p>{% endif %}
+                <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
+                    {% if page.header.hero_button_text %}
+                        <a href="{{ page.header.hero_button_link ?: '#' }}" class="btn hx-btn-primary">{{ page.header.hero_button_text }}</a>
+                    {% endif %}
+                    {% if page.header.hero_button2_text %}
+                        <a href="{{ page.header.hero_button2_link ?: '#' }}" class="btn hx-btn-ghost">{{ page.header.hero_button2_text }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section class="container hx-home-body">
+            <div class="doc-content">{{ page.content|raw }}</div>
+
+            <div class="row g-3 mt-2">
+                {% for section in pages.children.visible %}
+                    {% if not section.home %}
+                    <div class="col-md-6 col-xl-4">
+                        <a href="{{ section.url }}" class="hx-card d-block h-100">
+                            <div class="hx-card-icon">{{ section.header.icon ?: '▣' }}</div>
+                            <h3>{{ section.menu }}</h3>
+                            <p>{{ section.header.lead ?: section.summary|striptags|slice(0, 110) }}</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <div class="container" style="max-width:1050px">{% include 'partials/footer.html.twig' %}</div>
+    </main>
+</div>
+{% endblock %}
