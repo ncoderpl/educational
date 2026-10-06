@@ -68,56 +68,9 @@ class __TwigTemplate_afa7ad735b1c7098c5393725d8d86b59_sourced extends Template
         // line 6
         yield "
     <main class=\"hx-main\">
-        <section class=\"hx-hero text-center\">
-            <div class=\"hx-hero-glow\"></div>
-            <div class=\"container position-relative\">
-                ";
-        // line 11
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 11), "badge", [], "any", false, false, false, 11)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            yield "<span class=\"hx-badge\">";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 11), "badge", [], "any", false, false, false, 11), "html", null, true);
-            yield "</span>";
-        }
-        // line 12
-        yield "                <h1 class=\"hx-hero-title\">";
-        yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 12), "hero_title", [], "any", false, false, false, 12)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 12), "hero_title", [], "any", false, false, false, 12), "html", null, true)) : ($this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "title", [], "any", false, false, false, 12), "html", null, true)));
-        yield "</h1>
-                ";
-        // line 13
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 13), "hero_subtitle", [], "any", false, false, false, 13)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            yield "<p class=\"hx-hero-sub\">";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 13), "hero_subtitle", [], "any", false, false, false, 13), "html", null, true);
-            yield "</p>";
-        }
-        // line 14
-        yield "                <div class=\"d-flex justify-content-center gap-2 flex-wrap mt-4\">
-                    ";
-        // line 15
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 15), "hero_button_text", [], "any", false, false, false, 15)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 16
-            yield "                        <a href=\"";
-            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 16), "hero_button_link", [], "any", false, false, false, 16)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 16), "hero_button_link", [], "any", false, false, false, 16), "html", null, true)) : ("#"));
-            yield "\" class=\"btn hx-btn-primary\">";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 16), "hero_button_text", [], "any", false, false, false, 16), "html", null, true);
-            yield "</a>
-                    ";
-        }
-        // line 18
-        yield "                    ";
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 18), "hero_button2_text", [], "any", false, false, false, 18)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 19
-            yield "                        <a href=\"";
-            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 19), "hero_button2_link", [], "any", false, false, false, 19)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ($this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 19), "hero_button2_link", [], "any", false, false, false, 19), "html", null, true)) : ("#"));
-            yield "\" class=\"btn hx-btn-ghost\">";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "header", [], "any", false, false, false, 19), "hero_button2_text", [], "any", false, false, false, 19), "html", null, true);
-            yield "</a>
-                    ";
-        }
-        // line 21
-        yield "                </div>
-            </div>
-        </section>
-
+        ";
+        // line 24
+        yield "
         <section class=\"container hx-home-body\">
             <div class=\"doc-content\">";
         // line 26
@@ -235,7 +188,7 @@ class __TwigTemplate_afa7ad735b1c7098c5393725d8d86b59_sourced extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  202 => 58,  200 => 57,  194 => 53,  187 => 52,  180 => 48,  176 => 47,  172 => 45,  168 => 43,  164 => 41,  162 => 40,  159 => 39,  157 => 38,  153 => 37,  148 => 35,  143 => 33,  140 => 32,  137 => 31,  134 => 30,  130 => 29,  124 => 26,  117 => 21,  109 => 19,  106 => 18,  98 => 16,  96 => 15,  93 => 14,  87 => 13,  82 => 12,  76 => 11,  69 => 6,  67 => 5,  64 => 4,  57 => 3,  46 => 1,);
+        return array (  155 => 58,  153 => 57,  147 => 53,  140 => 52,  133 => 48,  129 => 47,  125 => 45,  121 => 43,  117 => 41,  115 => 40,  112 => 39,  110 => 38,  106 => 37,  101 => 35,  96 => 33,  93 => 32,  90 => 31,  87 => 30,  83 => 29,  77 => 26,  73 => 24,  69 => 6,  67 => 5,  64 => 4,  57 => 3,  46 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -247,7 +200,7 @@ class __TwigTemplate_afa7ad735b1c7098c5393725d8d86b59_sourced extends Template
     {% include \x27partials/sidebar.html.twig\x27 %}
 
     <main class=\"hx-main\">
-        <section class=\"hx-hero text-center\">
+        {# <section class=\"hx-hero text-center\">
             <div class=\"hx-hero-glow\"></div>
             <div class=\"container position-relative\">
                 {% if page.header.badge %}<span class=\"hx-badge\">{{ page.header.badge }}</span>{% endif %}
@@ -262,7 +215,7 @@ class __TwigTemplate_afa7ad735b1c7098c5393725d8d86b59_sourced extends Template
                     {% endif %}
                 </div>
             </div>
-        </section>
+        </section> #}
 
         <section class=\"container hx-home-body\">
             <div class=\"doc-content\">{{ page.content|raw }}</div>

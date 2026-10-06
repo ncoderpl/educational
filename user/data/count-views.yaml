@@ -1,4 +1,4 @@
-/: 68
+/: 70
 /typography: 8
 /mysql: 22
 /error: 438
@@ -16,8 +16,8 @@
 /isi/lesson: 3
 /lsk/wstep-do-lokalnych-sieci-komputerowych-lan: 20
 /lsk/prezentacje: 12
-/lsk/struktura-ramki-ethernet-i-adresacja-fizyczna-mac: 1
+/lsk/struktura-ramki-ethernet-i-adresacja-fizyczna-mac: 2
 /testy: 6
 /testy/lsk: 5
-/lsk/urzadzenia-warstwy-dostepu-do-sieci: 4
-/lsk/warstwa-dostepowa-i-technologia-ethernet: 3
+/lsk/urzadzenia-warstwy-dostepu-do-sieci: 5
+/lsk/warstwa-dostepowa-i-technologia-ethernet: 4
