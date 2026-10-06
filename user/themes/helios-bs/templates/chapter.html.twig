@@ -37,17 +37,6 @@
                     </div>
                 {% endif %}
 
-                {# <footer class="hx-pager">
-                    {% set prev = page.prevSibling %}
-                    {% set next = page.nextSibling %}
-                    {% if prev and prev.visible %}
-                        <a class="hx-pager-link" href="{{ prev.url }}"><small>Poprzednia</small><span>← {{ prev.title }}</span></a>
-                    {% else %}<span></span>{% endif %}
-                    {% if next and next.visible %}
-                        <a class="hx-pager-link text-end" href="{{ next.url }}"><small>Następna</small><span>{{ next.title }} →</span></a>
-                    {% endif %}
-                </footer> #}
-
                 <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
                     <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>
                     {% if config.theme.github_edit_url %}

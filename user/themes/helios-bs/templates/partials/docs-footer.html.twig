@@ -1,0 +1,23 @@
+<footer class="hx-pager">
+    {# Pobieramy kolekcję widocznych stron rodzica, ułożoną według domyślnego sortowania #}
+    {% set collection = page.parent.children.visible %}
+    {# Metody adjacent() zwracają bezpiecznie sąsiednie strony lub null #}
+    {% set prev = collection.prevSibling(page.path) %}
+    {% set next = collection.nextSibling(page.path) %}
+
+    {% if next %}
+        <a class="hx-pager-link text-end" href="{{ next.url }}">
+            <small>Poprzednia Lekcja</small>
+            <span>← {{ next.title }} </span>
+        </a>
+    {% else %}
+        <span></span>
+    {% endif %}
+
+    {% if prev %}
+        <a class="hx-pager-link" href="{{ prev.url }}">
+            <small>Następna Lekcja</small>
+            <span>{{ prev.title }} →</span>
+        </a>
+    {% endif %}
+</footer>

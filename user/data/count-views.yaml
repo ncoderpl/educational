@@ -1,11 +1,11 @@
-/: 70
+/: 73
 /typography: 8
 /mysql: 22
 /error: 438
 /sso: 23
 /lsk: 71
 /lsk/media_transmisyjne_i_standardy_sieci: 40
-/login: 102
+/login: 104
 /user_unauthorized: 62
 /sso/media_transmisyjne_i_standardy_sieci: 26
 /mysql/media_transmisyjne_i_standardy_sieci: 1

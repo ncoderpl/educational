@@ -1,0 +1,10 @@
+# Cache i logi Grav
+/cache/*
+/images/
+/logs/
+
+# Pliki tymczasowe systemu operacyjnego i narzędzi
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
