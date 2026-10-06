@@ -3,19 +3,36 @@
 {% block body %}
 <div class="hx-shell">
     {% include 'partials/sidebar.html.twig' %}
-    <main class="hx-main docs" id="docs"">
+    <main class="hx-main docs" id="docs">
         <div class="hx-article-wrap">
             <article class="hx-article">
                 {% include "partials/hero.html.twig" %}
-                <nav class="hx-breadcrumbs" aria-label="breadcrumb">
-                    <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
-                    {% for crumb in page.parents|reverse %}
-                        {% if not crumb.root and not crumb.home %}
-                            <span>/</span><a href="{{ crumb.url }}">{{ crumb.menu }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    <span>/</span><span class="current">{{ page.menu }}</span>
-                </nav>
+
+                {# --- Zmieniony kontener: Breadcrumbs po lewej, Meta (czas i wyświetlenia) po prawej --- #}
+                <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
+                    <nav class="hx-breadcrumbs mb-0" aria-label="breadcrumb">
+                        <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
+                        {% for crumb in page.parents|reverse %}
+                            {% if not crumb.root and not crumb.home %}
+                                <span>/</span><a href="{{ crumb.url }}">{{ crumb.menu }}</a>
+                            {% endif %}
+                        {% endfor %}
+                        <span>/</span><span class="current">{{ page.menu }}</span>
+                    </nav>
+
+                    {# Statystyki: Czas czytania i Wyświetlenia #}
+                    <div class="d-flex align-items-center gap-3" style="font-size: 0.85rem; color: var(--hx-muted);">
+
+                        {# Czas czytania (obliczany w locie: ilość słów / 200 słów na minutę) #}
+                        {% set words = page.content|striptags|wordcount %}
+                        {% set minutes = (words / 200)|round(0, 'ceil') %}
+                        <span class="d-flex align-items-center gap-1" title="Szacowany czas czytania">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            {{ minutes < 1 ? 1 : minutes }} min czytania
+                     {% include "partials/count.html.twig" %}
+                        </span>
+                    </div>
+                </div>
 
                 {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
 
@@ -46,6 +63,7 @@
                 </div>
 
                 {% include 'partials/footer.html.twig' %}
+
             </article>
 
             <aside class="hx-toc d-none d-xl-block">
