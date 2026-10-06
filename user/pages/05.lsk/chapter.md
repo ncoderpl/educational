@@ -3,5 +3,4 @@ title: LSK
 access:
   site.lsk: true
 ---
-
-LSK
+Lokalne sieci komputerowe

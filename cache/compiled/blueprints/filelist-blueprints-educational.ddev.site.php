@@ -3,7 +3,7 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'blueprints',
     'environment' => 'educational.ddev.site',
-    'timestamp' => 1791228287,
+    'timestamp' => 1791260086,
     'check_interval' => 2,
     'directories' => [
         '/var/www/html/system/blueprints/config' => 1791209378,

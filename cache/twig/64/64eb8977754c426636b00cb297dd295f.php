@@ -85,118 +85,172 @@ class __TwigTemplate_a537ae911319e50e233e9a2c5c88da8c_sourced extends Template
                                 <svg class=\"hx-chev\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 6l6 6-6 6\"/></svg>
                             </summary>
                             <ul class=\"list-unstyled mb-0 hx-group-list\">
-                                <li><a class=\"hx-nav-link ";
-                    // line 19
-                    yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["section"], "active", [], "any", false, false, false, 19)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
-                    yield "\" href=\"";
-                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "url", [], "any", false, false, false, 19), "html", null, true);
-                    yield "\"> Lista wpisów </a></li>
                                 ";
                     // line 20
+                    yield "                                <li><a class=\"hx-nav-link ";
+                    yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["section"], "active", [], "any", false, false, false, 20)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                    yield "\" href=\"";
+                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "url", [], "any", false, false, false, 20), "html", null, true);
+                    yield "\"> Lista wpisów </a></li>
+
+                                ";
+                    // line 23
+                    yield "                                ";
                     $context['_parent'] = $context;
-                    $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["section"], "children", [], "any", false, false, false, 20), "visible", [], "any", false, false, false, 20));
+                    $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["section"], "children", [], "any", false, false, false, 23), "visible", [], "any", false, false, false, 23));
+                    $context['loop'] = [
+                      'parent' => $context['_parent'],
+                      'index0' => 0,
+                      'index'  => 1,
+                      'first'  => true,
+                    ];
+                    if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                        $length = count($context['_seq']);
+                        $context['loop']['revindex0'] = $length - 1;
+                        $context['loop']['revindex'] = $length;
+                        $context['loop']['length'] = $length;
+                        $context['loop']['last'] = 1 === $length;
+                    }
                     foreach ($context['_seq'] as $context["_key"] => $context["child"]) {
-                        // line 21
+                        // line 24
                         yield "                                    ";
-                        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["child"], "children", [], "any", false, false, false, 21), "visible", [], "any", false, false, false, 21), "count", [], "any", false, false, false, 21)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                            // line 22
+                        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["child"], "children", [], "any", false, false, false, 24), "visible", [], "any", false, false, false, 24), "count", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                            // line 25
                             yield "                                        <li>
                                             <details class=\"hx-subgroup\" ";
-                            // line 23
-                            yield (string) ((((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 23)) && $tmp instanceof Markup ? (string) $tmp : $tmp) || (($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "activeChild", [], "any", false, false, false, 23)) && $tmp instanceof Markup ? (string) $tmp : $tmp))) ? ("open") : (""));
+                            // line 26
+                            yield (string) ((((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 26)) && $tmp instanceof Markup ? (string) $tmp : $tmp) || (($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "activeChild", [], "any", false, false, false, 26)) && $tmp instanceof Markup ? (string) $tmp : $tmp))) ? ("open") : (""));
                             yield ">
                                                 <summary class=\"hx-nav-link hx-sub-summary ";
-                            // line 24
-                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                            // line 27
+                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 27)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
                             yield "\">
-                                                    <span>";
-                            // line 25
-                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "menu", [], "any", false, false, false, 25), "html", null, true);
+                                                    <span><span class=\"opacity-50 me-1\">";
+                            // line 28
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 28), "html", null, true);
+                            yield ".</span>";
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "menu", [], "any", false, false, false, 28), "html", null, true);
                             yield "</span>
                                                     <svg class=\"hx-chev\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 6l6 6-6 6\"/></svg>
                                                 </summary>
                                                 <ul class=\"list-unstyled hx-nav-sub\">
-                                                    <li><a class=\"hx-nav-link ";
-                            // line 29
-                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 29)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
-                            yield "\" href=\"";
-                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "url", [], "any", false, false, false, 29), "html", null, true);
-                            yield "\"> Lista wpisów </a></li>
                                                     ";
-                            // line 30
+                            // line 33
+                            yield "                                                    <li><a class=\"hx-nav-link ";
+                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 33)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                            yield "\" href=\"";
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "url", [], "any", false, false, false, 33), "html", null, true);
+                            yield "\"> Lista wpisów </a></li>
+
+                                                    ";
+                            // line 36
+                            yield "                                                    ";
                             $context['_parent'] = $context;
-                            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["child"], "children", [], "any", false, false, false, 30), "visible", [], "any", false, false, false, 30));
+                            $context['_seq'] = CoreExtension::ensureTraversable(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["child"], "children", [], "any", false, false, false, 36), "visible", [], "any", false, false, false, 36));
+                            $context['loop'] = [
+                              'parent' => $context['_parent'],
+                              'index0' => 0,
+                              'index'  => 1,
+                              'first'  => true,
+                            ];
+                            if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof \Countable)) {
+                                $length = count($context['_seq']);
+                                $context['loop']['revindex0'] = $length - 1;
+                                $context['loop']['revindex'] = $length;
+                                $context['loop']['length'] = $length;
+                                $context['loop']['last'] = 1 === $length;
+                            }
                             foreach ($context['_seq'] as $context["_key"] => $context["sub"]) {
-                                // line 31
+                                // line 37
                                 yield "                                                        <li><a class=\"hx-nav-link ";
-                                yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "active", [], "any", false, false, false, 31)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                                yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "active", [], "any", false, false, false, 37)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
                                 yield "\" href=\"";
-                                yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "url", [], "any", false, false, false, 31), "html", null, true);
-                                yield "\">";
-                                yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "menu", [], "any", false, false, false, 31), "html", null, true);
+                                yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "url", [], "any", false, false, false, 37), "html", null, true);
+                                yield "\"><span class=\"opacity-50 me-1\">";
+                                yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 37), "html", null, true);
+                                yield ".</span>";
+                                yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["sub"], "menu", [], "any", false, false, false, 37), "html", null, true);
                                 yield "</a></li>
                                                     ";
+                                ++$context['loop']['index0'];
+                                ++$context['loop']['index'];
+                                $context['loop']['first'] = false;
+                                if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                                    --$context['loop']['revindex0'];
+                                    --$context['loop']['revindex'];
+                                    $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                                }
                             }
                             $_parent = $context['_parent'];
-                            unset($context['_seq'], $context['_key'], $context['sub'], $context['_parent']);
+                            unset($context['_seq'], $context['_key'], $context['sub'], $context['_parent'], $context['loop']);
                             $context = array_intersect_key($context, $_parent);
                             $context += $_parent;
-                            // line 33
+                            // line 39
                             yield "                                                </ul>
                                             </details>
                                         </li>
                                     ";
                         } else {
-                            // line 37
+                            // line 43
                             yield "                                        <li><a class=\"hx-nav-link ";
-                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 37)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                            yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["child"], "active", [], "any", false, false, false, 43)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
                             yield "\" href=\"";
-                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "url", [], "any", false, false, false, 37), "html", null, true);
-                            yield "\">";
-                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "menu", [], "any", false, false, false, 37), "html", null, true);
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "url", [], "any", false, false, false, 43), "html", null, true);
+                            yield "\"><span class=\"opacity-50 me-1\">";
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["loop"], "index", [], "any", false, false, false, 43), "html", null, true);
+                            yield ".</span>";
+                            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["child"], "menu", [], "any", false, false, false, 43), "html", null, true);
                             yield "</a></li>
                                     ";
                         }
-                        // line 39
+                        // line 45
                         yield "                                ";
+                        ++$context['loop']['index0'];
+                        ++$context['loop']['index'];
+                        $context['loop']['first'] = false;
+                        if (isset($context['loop']['revindex0'], $context['loop']['revindex'])) {
+                            --$context['loop']['revindex0'];
+                            --$context['loop']['revindex'];
+                            $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+                        }
                     }
                     $_parent = $context['_parent'];
-                    unset($context['_seq'], $context['_key'], $context['child'], $context['_parent']);
+                    unset($context['_seq'], $context['_key'], $context['child'], $context['_parent'], $context['loop']);
                     $context = array_intersect_key($context, $_parent);
                     $context += $_parent;
-                    // line 40
+                    // line 46
                     yield "                            </ul>
                         </details>
                     ";
                 } else {
-                    // line 43
+                    // line 49
                     yield "                        ";
-                    // line 44
+                    // line 50
                     yield "                        <div class=\"hx-group ";
                     yield (string) (((($tmp = ($context["is_branch_active"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("is-active-branch") : (""));
                     yield "\">
                             <a class=\"hx-nav-link ";
-                    // line 45
-                    yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["section"], "active", [], "any", false, false, false, 45)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
+                    // line 51
+                    yield (string) (((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["section"], "active", [], "any", false, false, false, 51)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) ? ("active") : (""));
                     yield "\" href=\"";
-                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "url", [], "any", false, false, false, 45), "html", null, true);
+                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "url", [], "any", false, false, false, 51), "html", null, true);
                     yield "\">";
-                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "menu", [], "any", false, false, false, 45), "html", null, true);
+                    yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, $context["section"], "menu", [], "any", false, false, false, 51), "html", null, true);
                     yield "</a>
                         </div>
                     ";
                 }
-                // line 48
+                // line 54
                 yield "                ";
             }
-            // line 49
+            // line 55
             yield "            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['section'], $context['_parent']);
         $context = array_intersect_key($context, $_parent);
         $context += $_parent;
-        // line 50
+        // line 56
         yield "        </nav>
     </div>
 </div>";
@@ -232,7 +286,7 @@ class __TwigTemplate_a537ae911319e50e233e9a2c5c88da8c_sourced extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  200 => 50,  193 => 49,  190 => 48,  180 => 45,  175 => 44,  173 => 43,  168 => 40,  161 => 39,  151 => 37,  145 => 33,  131 => 31,  127 => 30,  121 => 29,  114 => 25,  110 => 24,  106 => 23,  103 => 22,  100 => 21,  96 => 20,  90 => 19,  83 => 15,  75 => 13,  73 => 12,  70 => 11,  67 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
+        return array (  254 => 56,  247 => 55,  244 => 54,  234 => 51,  229 => 50,  227 => 49,  222 => 46,  207 => 45,  195 => 43,  189 => 39,  165 => 37,  147 => 36,  139 => 33,  130 => 28,  126 => 27,  122 => 26,  119 => 25,  116 => 24,  98 => 23,  90 => 20,  83 => 15,  75 => 13,  73 => 12,  70 => 11,  67 => 10,  64 => 9,  60 => 8,  52 => 3,  48 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -255,25 +309,31 @@ class __TwigTemplate_a537ae911319e50e233e9a2c5c88da8c_sourced extends Template
                                 <svg class=\"hx-chev\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 6l6 6-6 6\"/></svg>
                             </summary>
                             <ul class=\"list-unstyled mb-0 hx-group-list\">
+                                {# Index rozdziału (chapter) - bez numeracji #}
                                 <li><a class=\"hx-nav-link {{ section.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ section.url }}\"> Lista wpisów </a></li>
+
+                                {# Właściwe lekcje - z numeracją #}
                                 {% for child in section.children.visible %}
                                     {% if child.children.visible.count %}
                                         <li>
                                             <details class=\"hx-subgroup\" {{ child.active or child.activeChild ? \x27open\x27 : \x27\x27 }}>
                                                 <summary class=\"hx-nav-link hx-sub-summary {{ child.active ? \x27active\x27 : \x27\x27 }}\">
-                                                    <span>{{ child.menu }}</span>
+                                                    <span><span class=\"opacity-50 me-1\">{{ loop.index }}.</span>{{ child.menu }}</span>
                                                     <svg class=\"hx-chev\" width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 6l6 6-6 6\"/></svg>
                                                 </summary>
                                                 <ul class=\"list-unstyled hx-nav-sub\">
+                                                    {# Index podrozdziału - bez numeracji #}
                                                     <li><a class=\"hx-nav-link {{ child.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ child.url }}\"> Lista wpisów </a></li>
+
+                                                    {# Właściwe pod-lekcje - z numeracją #}
                                                     {% for sub in child.children.visible %}
-                                                        <li><a class=\"hx-nav-link {{ sub.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ sub.url }}\">{{ sub.menu }}</a></li>
+                                                        <li><a class=\"hx-nav-link {{ sub.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ sub.url }}\"><span class=\"opacity-50 me-1\">{{ loop.index }}.</span>{{ sub.menu }}</a></li>
                                                     {% endfor %}
                                                 </ul>
                                             </details>
                                         </li>
                                     {% else %}
-                                        <li><a class=\"hx-nav-link {{ child.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ child.url }}\">{{ child.menu }}</a></li>
+                                        <li><a class=\"hx-nav-link {{ child.active ? \x27active\x27 : \x27\x27 }}\" href=\"{{ child.url }}\"><span class=\"opacity-50 me-1\">{{ loop.index }}.</span>{{ child.menu }}</a></li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>

@@ -16,8 +16,8 @@ use Twig\Source;
 use Twig\Template;
 use Twig\TemplateWrapper;
 
-/* @Page:/var/www/html/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci */
-class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
+/* @Page:/var/www/html/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci */
+class __TwigTemplate_bed24b1da5648534d622f25944fe3c25_sourced extends Template
 {
     private Source $source;
     /**
@@ -342,7 +342,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p>Warto zapamiętać, że <strong>kategoria dotyczy kabla i całego toru</strong> (kabel, gniazda, krosownice, patchcordy). Zastosowanie kabla Cat 6A z gniazdami Cat 5e daje tor o parametrach Cat 5e — tor jest tak dobry, jak jego najsłabszy element.</p>
 <h3>2.4. Złącze RJ-45 i układ żył</h3>
 <p>Standardowym złączem dla skrętki jest <strong>RJ-45</strong> (formalnie 8P8C — osiem pozycji, osiem styków). Kolejność żył w złączu określają dwa układy z normy TIA/EIA-568: <strong>T568A</strong> i <strong>T568B</strong>. Różnią się one zamianą miejscami par zielonej i pomarańczowej. W Polsce i na świecie dominuje układ <strong>T568B</strong>, choć oba są równoważne technicznie. Ważne jest wyłącznie, aby <strong>na obu końcach kabla stosować ten sam układ</strong> (kabel prosty) albo odpowiednio różny (kabel skrosowany).</p>
-<p><img alt=\"Układ żył w złączu RJ-45 — T568B i T568A oraz funkcje styków w 10/100BASE-TX i 1000BASE-T\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/skretka-rj45-t568.svg\" /></p>
+<p><img alt=\"Układ żył w złączu RJ-45 — T568B i T568A oraz funkcje styków w 10/100BASE-TX i 1000BASE-T\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/skretka-rj45-t568.svg\" /></p>
 <p>W Ethernecie 10/100 Mb/s wykorzystywane są tylko dwie pary: <strong>styki 1 i 2</strong> (nadawanie, TX) oraz <strong>styki 3 i 6</strong> (odbiór, RX). Para 4–5 i para 7–8 pozostają niewykorzystane (mogą być użyte do zasilania PoE lub telefonii). W Gigabit Ethernet i szybszych wykorzystywane są wszystkie cztery pary, a każda para przenosi dane w obu kierunkach jednocześnie (dzięki układom hybrydowym i kasowaniu echa).</p>
 <h3>2.5. Kabel prosty i skrosowany, Auto-MDI/MDIX</h3>
 <p>Dawniej rozróżniano dwa typy urządzeń: <strong>MDI</strong> (np. karta sieciowa komputera, która nadaje na stykach 1–2) i <strong>MDI-X</strong> (np. port koncentratora lub przełącznika, który odbiera na stykach 1–2). Połączenie urządzeń różnych typów wymagało <strong>kabla prostego</strong>, a tych samych typów (komputer–komputer, przełącznik–przełącznik) — <strong>kabla skrosowanego</strong> (crossover), w którym pary TX i RX są zamienione (jeden koniec T568A, drugi T568B).</p>
@@ -511,7 +511,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 </ul>
 <p>Różnica współczynników załamania jest bardzo mała (rzędu 1 %), co jest typowe dla włókien telekomunikacyjnych.</p>
 <h3>3.2. Budowa włókna i kabla</h3>
-<p><img alt=\"Budowa włókna światłowodowego oraz propagacja światła we włóknie wielomodowym skokowym, gradientowym i jednomodowym\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/swiatlowod-budowa-i-propagacja.svg\" /></p>
+<p><img alt=\"Budowa włókna światłowodowego oraz propagacja światła we włóknie wielomodowym skokowym, gradientowym i jednomodowym\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/swiatlowod-budowa-i-propagacja.svg\" /></p>
 <p>Włókno składa się z trzech warstw:</p>
 <ol>
 <li><strong>Rdzeń (core)</strong> — obszar, w którym rozchodzi się światło; ze szkła kwarcowego (SiO₂) domieszkowanego np. germanem, aby podnieść współczynnik załamania. Średnica: ok. <strong>9 µm</strong> (jednomodowe) lub <strong>50 / 62,5 µm</strong> (wielomodowe).</li>
@@ -759,7 +759,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p><strong>Fala elektromagnetyczna</strong> to zaburzenie pola elektrycznego i magnetycznego rozchodzące się w przestrzeni z prędkością światła <span data-m=\"c \\approx 3\\cdot 10^8\"></span> m/s. Częstotliwość <span data-m=\"f\"></span> i długość fali <span data-m=\"\\lambda\"></span> są związane zależnością:</p>
 <div data-m=\"c = f \\cdot \\lambda \\quad\\Rightarrow\\quad \\lambda = \\frac{c}{f}\"></div>
 <p>Dla Wi-Fi 2,4 GHz długość fali wynosi ok. 12,5 cm, dla 5 GHz — ok. 6 cm, a dla 60 GHz — ok. 5 mm. Długość fali determinuje rozmiary anten (typowo ułamek długości fali, np. ćwierćfalówka), sposób przenikania przez przeszkody i zjawiska dyfrakcyjne.</p>
-<p><img alt=\"Pasma fal radiowych według ITU w skali logarytmicznej wraz z zastosowaniami: radio AM/FM, telefonia komórkowa, Wi-Fi, łączność satelitarna\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/widmo-fal-radiowych.svg\" /></p>
+<p><img alt=\"Pasma fal radiowych według ITU w skali logarytmicznej wraz z zastosowaniami: radio AM/FM, telefonia komórkowa, Wi-Fi, łączność satelitarna\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/widmo-fal-radiowych.svg\" /></p>
 <p>Międzynarodowy Związek Telekomunikacyjny (<strong>ITU</strong>) dzieli widmo radiowe na pasma dekadowe, od VLF (3–30 kHz) do EHF (30–300 GHz). Sieci bezprzewodowe LAN pracują głównie w paśmie <strong>UHF/SHF</strong> (od ok. 2,4 do 7 GHz), gdzie zapewniona jest dostatecznie duża szerokość pasma, a anteny są niewielkie i wygodne w urządzeniach mobilnych.</p>
 <h3>4.2. Regulacje i pasma bezlicencyjne (ISM/UNII)</h3>
 <p>Widmo radiowe jest zasobem ograniczonym i <strong>regulowanym</strong>. Na świecie o podziale częstotliwości decyduje ITU, w Europie normy techniczne opracowuje <strong>ETSI</strong>, a decyzje regulacyjne wprowadza Komisja Europejska; w Polsce nadzór sprawuje <strong>Urząd Komunikacji Elektronicznej (UKE)</strong>. Większość zastosowań wymaga <strong>pozwolenia radiowego</strong> (licencji), ale wybrane pasma, tzw. <strong>ISM</strong> (Industrial, Scientific, Medical), udostępniono do użytku <strong>bezlicencyjnego</strong> pod warunkiem przestrzegania ograniczeń mocy i zasad współdzielenia.</p>
@@ -1016,7 +1016,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 </ul>
 <p>Najczęściej spotykany jest tryb <strong>infrastrukturalny</strong> (infrastructure), w którym cała komunikacja przechodzi przez AP, nawet między dwiema stacjami w tej samej komórce. Wariantami są: <strong>mostek bezprzewodowy</strong> (łączenie dwóch sieci przewodowych), <strong>repeater/extender</strong> (rozszerzenie zasięgu — zwykle kosztem połowy przepustowości, bo radio nadaje i odbiera na tym samym kanale) oraz <strong>sieć kratowa (mesh)</strong>, w której punkty dostępowe łączą się ze sobą bezprzewodowo, tworząc elastyczną strukturę (standard <strong>802.11s</strong> oraz rozwiązania producentów).</p>
 <h3>5.3. Przegląd ewolucji standardów</h3>
-<p><img alt=\"Teoretyczne maksymalne przepływności kolejnych standardów Wi-Fi w skali logarytmicznej: od 2 Mb/s w 802.11 do ponad 46 Gb/s w 802.11be\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wifi-ewolucja-standardow.svg\" /></p>
+<p><img alt=\"Teoretyczne maksymalne przepływności kolejnych standardów Wi-Fi w skali logarytmicznej: od 2 Mb/s w 802.11 do ponad 46 Gb/s w 802.11be\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wifi-ewolucja-standardow.svg\" /></p>
 <table>
 <thead>
 <tr>
@@ -1215,7 +1215,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p>W Europie dostępnych jest <strong>13 kanałów</strong> o numerach 1–13, których środki rozmieszczone są co <strong>5 MHz</strong> według wzoru:</p>
 <div data-m=\"f_{\\text{środ}}(n) = 2412 + 5\\,(n-1)\\ \\text{[MHz]}, \\qquad n = 1,\\dots,13\"></div>
 <p>Ponieważ szerokość kanału wynosi 20 MHz (22 MHz w DSSS/CCK), a odstęp środków tylko 5 MHz, kanały <strong>silnie się nakładają</strong>. Kanały nienakładające się to praktycznie <strong>1, 6 i 11</strong> (w Europie bywa też używany zestaw 1, 5, 9, 13 kosztem lekkiego zachodzenia). Zakłócenie z sąsiedniego, częściowo nakładającego się kanału jest gorsze niż współdzielenie tego samego kanału, ponieważ stacje nie potrafią zdekodować cudzych nagłówków, więc nie koordynują dostępu do medium (patrz 5.7); dlatego zaleca się albo używanie tego samego kanału, albo kanałów rozdzielonych.</p>
-<p><img alt=\"Kanały Wi-Fi w paśmie 2,4 GHz — 13 kanałów po 20 MHz; nienakładające się: 1, 6 i 11\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wifi-kanaly-2-4ghz.svg\" /></p>
+<p><img alt=\"Kanały Wi-Fi w paśmie 2,4 GHz — 13 kanałów po 20 MHz; nienakładające się: 1, 6 i 11\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wifi-kanaly-2-4ghz.svg\" /></p>
 <p>Szerokość 40 MHz w paśmie 2,4 GHz praktycznie nie ma sensu w zatłoczonym środowisku, bo zajmuje niemal połowę pasma i zwiększa interferencję. Dodatkowo pasmo jest współdzielone z Bluetooth, kuchenkami mikrofalowymi, bezprzewodowymi kamerami i innymi urządzeniami.</p>
 <h4>Pasmo 5 GHz</h4>
 <p>W paśmie 5 GHz numeracja kanałów jest ustalona co 5 MHz od częstotliwości 5000 MHz (<span data-m=\"f = 5000 + 5n\"></span> MHz), lecz standardowo używa się kanałów rozłożonych co 4 numery (20 MHz). W Europie dostępne są m.in.:</p>
@@ -1329,7 +1329,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <li>Jeśli ACK nie nadejdzie w oczekiwanym czasie, stacja uznaje kolizję lub zakłócenie, <strong>podwaja okno rywalizacji</strong> (binary exponential backoff): <span data-m=\"CW \\leftarrow 2\\,(CW+1) - 1\"></span> do wartości maksymalnej <span data-m=\"CW_{max}\"></span>, i ponawia próbę (do limitu retransmisji; typowo 7 dla krótkich ramek).</li>
 </ol>
 <p>Losowy backoff zapobiega temu, że po zwolnieniu się medium wszystkie oczekujące stacje ruszą jednocześnie.</p>
-<p><img alt=\"Sekwencja dostępu do medium CSMA/CA: DIFS, backoff, ramka danych, SIFS i ACK oraz zachowanie stacji odczuwającej NAV\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/csma-ca-sekwencja.svg\" /></p>
+<p><img alt=\"Sekwencja dostępu do medium CSMA/CA: DIFS, backoff, ramka danych, SIFS i ACK oraz zachowanie stacji odczuwającej NAV\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/csma-ca-sekwencja.svg\" /></p>
 <p><strong>Odstępy czasowe (przykładowe wartości):</strong></p>
 <table>
 <thead>
@@ -1627,7 +1627,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <h3>6.4. DSL — cyfrowa linia abonencka</h3>
 <h4>Idea</h4>
 <p>Kabel telefoniczny (skrętka miedziana) doprowadzony do niemal każdego domu jest zdolny do przenoszenia sygnałów o częstotliwościach dużo wyższych niż pasmo głosowe (do ok. 4 kHz wykorzystywane w telefonii). Technologie <strong>DSL (Digital Subscriber Line)</strong> wykorzystują <strong>wyższe częstotliwości</strong> tej samej pary przewodów do przesyłania danych, <strong>równolegle</strong> z klasyczną usługą telefoniczną (POTS), bez zajmowania linii. Rodzina technologii zbiorczo oznaczana jest <strong>xDSL</strong>.</p>
-<p><img alt=\"Architektura dostępu DSL: lokal abonenta z modemem i splitterem, pętla lokalna, DSLAM i BNG w centrali oraz podział pasma ADSL\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/dsl-architektura.svg\" /></p>
+<p><img alt=\"Architektura dostępu DSL: lokal abonenta z modemem i splitterem, pętla lokalna, DSLAM i BNG w centrali oraz podział pasma ADSL\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/dsl-architektura.svg\" /></p>
 <h4>Elementy architektury</h4>
 <ul>
 <li><strong>Modem/router DSL</strong> u abonenta.</li>
@@ -1987,7 +1987,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p><strong>VPN przez Internet.</strong> Tania alternatywa dla łączy dzierżawionych: zaszyfrowane <strong>tunele</strong> przez publiczny Internet, np. <strong>IPsec</strong> (IKEv2 + ESP), <strong>SSL/TLS VPN</strong>, <strong>WireGuard</strong>. Zapewniają poufność i uwierzytelnienie, ale nie gwarantują jakości usług (opóźnień, utraty pakietów), ponieważ ruch przechodzi przez sieć „best effort\".</p>
 <p><strong>SD-WAN (Software-Defined WAN).</strong> Rozwiązanie łączące wiele łączy (światłowodowe, kablowe, LTE/5G, MPLS) w jedną <strong>nakładkę logiczną</strong> (overlay) sterowaną centralnie. Kontroler dobiera ścieżkę dla aplikacji na podstawie bieżącej jakości łączy (opóźnienie, jitter, straty), zapewniając redundancję i optymalizację kosztów; tunele są szyfrowane, a konfiguracja nowych oddziałów może być zautomatyzowana (<strong>zero-touch provisioning</strong>).</p>
 <h4>Topologie WAN</h4>
-<p><img alt=\"Topologie WAN: punkt–punkt, gwiazda (hub-and-spoke) i pełna siatka wraz ze wzorami na liczbę łączy\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wan-topologie.svg\" /></p>
+<p><img alt=\"Topologie WAN: punkt–punkt, gwiazda (hub-and-spoke) i pełna siatka wraz ze wzorami na liczbę łączy\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wan-topologie.svg\" /></p>
 <ul>
 <li><strong>Punkt–punkt</strong> — jedno dedykowane łącze między dwiema lokalizacjami; proste, przewidywalne, lecz nieekonomiczne dla wielu lokalizacji.</li>
 <li><strong>Gwiazda (hub-and-spoke)</strong> — oddziały łączą się z centralą; koszt rośnie liniowo (n − 1 łączy), ale ruch między oddziałami przechodzi przez centralę (dodatkowe opóźnienie), a centrala jest punktem awarii.</li>
@@ -2238,7 +2238,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
      */
     public function getTemplateName(): string
     {
-        return "@Page:/var/www/html/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci";
+        return "@Page:/var/www/html/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci";
     }
 
     /**
@@ -2559,7 +2559,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p>Warto zapamiętać, że <strong>kategoria dotyczy kabla i całego toru</strong> (kabel, gniazda, krosownice, patchcordy). Zastosowanie kabla Cat 6A z gniazdami Cat 5e daje tor o parametrach Cat 5e — tor jest tak dobry, jak jego najsłabszy element.</p>
 <h3>2.4. Złącze RJ-45 i układ żył</h3>
 <p>Standardowym złączem dla skrętki jest <strong>RJ-45</strong> (formalnie 8P8C — osiem pozycji, osiem styków). Kolejność żył w złączu określają dwa układy z normy TIA/EIA-568: <strong>T568A</strong> i <strong>T568B</strong>. Różnią się one zamianą miejscami par zielonej i pomarańczowej. W Polsce i na świecie dominuje układ <strong>T568B</strong>, choć oba są równoważne technicznie. Ważne jest wyłącznie, aby <strong>na obu końcach kabla stosować ten sam układ</strong> (kabel prosty) albo odpowiednio różny (kabel skrosowany).</p>
-<p><img alt=\"Układ żył w złączu RJ-45 — T568B i T568A oraz funkcje styków w 10/100BASE-TX i 1000BASE-T\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/skretka-rj45-t568.svg\" /></p>
+<p><img alt=\"Układ żył w złączu RJ-45 — T568B i T568A oraz funkcje styków w 10/100BASE-TX i 1000BASE-T\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/skretka-rj45-t568.svg\" /></p>
 <p>W Ethernecie 10/100 Mb/s wykorzystywane są tylko dwie pary: <strong>styki 1 i 2</strong> (nadawanie, TX) oraz <strong>styki 3 i 6</strong> (odbiór, RX). Para 4–5 i para 7–8 pozostają niewykorzystane (mogą być użyte do zasilania PoE lub telefonii). W Gigabit Ethernet i szybszych wykorzystywane są wszystkie cztery pary, a każda para przenosi dane w obu kierunkach jednocześnie (dzięki układom hybrydowym i kasowaniu echa).</p>
 <h3>2.5. Kabel prosty i skrosowany, Auto-MDI/MDIX</h3>
 <p>Dawniej rozróżniano dwa typy urządzeń: <strong>MDI</strong> (np. karta sieciowa komputera, która nadaje na stykach 1–2) i <strong>MDI-X</strong> (np. port koncentratora lub przełącznika, który odbiera na stykach 1–2). Połączenie urządzeń różnych typów wymagało <strong>kabla prostego</strong>, a tych samych typów (komputer–komputer, przełącznik–przełącznik) — <strong>kabla skrosowanego</strong> (crossover), w którym pary TX i RX są zamienione (jeden koniec T568A, drugi T568B).</p>
@@ -2728,7 +2728,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 </ul>
 <p>Różnica współczynników załamania jest bardzo mała (rzędu 1 %), co jest typowe dla włókien telekomunikacyjnych.</p>
 <h3>3.2. Budowa włókna i kabla</h3>
-<p><img alt=\"Budowa włókna światłowodowego oraz propagacja światła we włóknie wielomodowym skokowym, gradientowym i jednomodowym\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/swiatlowod-budowa-i-propagacja.svg\" /></p>
+<p><img alt=\"Budowa włókna światłowodowego oraz propagacja światła we włóknie wielomodowym skokowym, gradientowym i jednomodowym\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/swiatlowod-budowa-i-propagacja.svg\" /></p>
 <p>Włókno składa się z trzech warstw:</p>
 <ol>
 <li><strong>Rdzeń (core)</strong> — obszar, w którym rozchodzi się światło; ze szkła kwarcowego (SiO₂) domieszkowanego np. germanem, aby podnieść współczynnik załamania. Średnica: ok. <strong>9 µm</strong> (jednomodowe) lub <strong>50 / 62,5 µm</strong> (wielomodowe).</li>
@@ -2976,7 +2976,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p><strong>Fala elektromagnetyczna</strong> to zaburzenie pola elektrycznego i magnetycznego rozchodzące się w przestrzeni z prędkością światła <span data-m=\"c \\approx 3\\cdot 10^8\"></span> m/s. Częstotliwość <span data-m=\"f\"></span> i długość fali <span data-m=\"\\lambda\"></span> są związane zależnością:</p>
 <div data-m=\"c = f \\cdot \\lambda \\quad\\Rightarrow\\quad \\lambda = \\frac{c}{f}\"></div>
 <p>Dla Wi-Fi 2,4 GHz długość fali wynosi ok. 12,5 cm, dla 5 GHz — ok. 6 cm, a dla 60 GHz — ok. 5 mm. Długość fali determinuje rozmiary anten (typowo ułamek długości fali, np. ćwierćfalówka), sposób przenikania przez przeszkody i zjawiska dyfrakcyjne.</p>
-<p><img alt=\"Pasma fal radiowych według ITU w skali logarytmicznej wraz z zastosowaniami: radio AM/FM, telefonia komórkowa, Wi-Fi, łączność satelitarna\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/widmo-fal-radiowych.svg\" /></p>
+<p><img alt=\"Pasma fal radiowych według ITU w skali logarytmicznej wraz z zastosowaniami: radio AM/FM, telefonia komórkowa, Wi-Fi, łączność satelitarna\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/widmo-fal-radiowych.svg\" /></p>
 <p>Międzynarodowy Związek Telekomunikacyjny (<strong>ITU</strong>) dzieli widmo radiowe na pasma dekadowe, od VLF (3–30 kHz) do EHF (30–300 GHz). Sieci bezprzewodowe LAN pracują głównie w paśmie <strong>UHF/SHF</strong> (od ok. 2,4 do 7 GHz), gdzie zapewniona jest dostatecznie duża szerokość pasma, a anteny są niewielkie i wygodne w urządzeniach mobilnych.</p>
 <h3>4.2. Regulacje i pasma bezlicencyjne (ISM/UNII)</h3>
 <p>Widmo radiowe jest zasobem ograniczonym i <strong>regulowanym</strong>. Na świecie o podziale częstotliwości decyduje ITU, w Europie normy techniczne opracowuje <strong>ETSI</strong>, a decyzje regulacyjne wprowadza Komisja Europejska; w Polsce nadzór sprawuje <strong>Urząd Komunikacji Elektronicznej (UKE)</strong>. Większość zastosowań wymaga <strong>pozwolenia radiowego</strong> (licencji), ale wybrane pasma, tzw. <strong>ISM</strong> (Industrial, Scientific, Medical), udostępniono do użytku <strong>bezlicencyjnego</strong> pod warunkiem przestrzegania ograniczeń mocy i zasad współdzielenia.</p>
@@ -3233,7 +3233,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 </ul>
 <p>Najczęściej spotykany jest tryb <strong>infrastrukturalny</strong> (infrastructure), w którym cała komunikacja przechodzi przez AP, nawet między dwiema stacjami w tej samej komórce. Wariantami są: <strong>mostek bezprzewodowy</strong> (łączenie dwóch sieci przewodowych), <strong>repeater/extender</strong> (rozszerzenie zasięgu — zwykle kosztem połowy przepustowości, bo radio nadaje i odbiera na tym samym kanale) oraz <strong>sieć kratowa (mesh)</strong>, w której punkty dostępowe łączą się ze sobą bezprzewodowo, tworząc elastyczną strukturę (standard <strong>802.11s</strong> oraz rozwiązania producentów).</p>
 <h3>5.3. Przegląd ewolucji standardów</h3>
-<p><img alt=\"Teoretyczne maksymalne przepływności kolejnych standardów Wi-Fi w skali logarytmicznej: od 2 Mb/s w 802.11 do ponad 46 Gb/s w 802.11be\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wifi-ewolucja-standardow.svg\" /></p>
+<p><img alt=\"Teoretyczne maksymalne przepływności kolejnych standardów Wi-Fi w skali logarytmicznej: od 2 Mb/s w 802.11 do ponad 46 Gb/s w 802.11be\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wifi-ewolucja-standardow.svg\" /></p>
 <table>
 <thead>
 <tr>
@@ -3432,7 +3432,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p>W Europie dostępnych jest <strong>13 kanałów</strong> o numerach 1–13, których środki rozmieszczone są co <strong>5 MHz</strong> według wzoru:</p>
 <div data-m=\"f_{\\text{środ}}(n) = 2412 + 5\\,(n-1)\\ \\text{[MHz]}, \\qquad n = 1,\\dots,13\"></div>
 <p>Ponieważ szerokość kanału wynosi 20 MHz (22 MHz w DSSS/CCK), a odstęp środków tylko 5 MHz, kanały <strong>silnie się nakładają</strong>. Kanały nienakładające się to praktycznie <strong>1, 6 i 11</strong> (w Europie bywa też używany zestaw 1, 5, 9, 13 kosztem lekkiego zachodzenia). Zakłócenie z sąsiedniego, częściowo nakładającego się kanału jest gorsze niż współdzielenie tego samego kanału, ponieważ stacje nie potrafią zdekodować cudzych nagłówków, więc nie koordynują dostępu do medium (patrz 5.7); dlatego zaleca się albo używanie tego samego kanału, albo kanałów rozdzielonych.</p>
-<p><img alt=\"Kanały Wi-Fi w paśmie 2,4 GHz — 13 kanałów po 20 MHz; nienakładające się: 1, 6 i 11\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wifi-kanaly-2-4ghz.svg\" /></p>
+<p><img alt=\"Kanały Wi-Fi w paśmie 2,4 GHz — 13 kanałów po 20 MHz; nienakładające się: 1, 6 i 11\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wifi-kanaly-2-4ghz.svg\" /></p>
 <p>Szerokość 40 MHz w paśmie 2,4 GHz praktycznie nie ma sensu w zatłoczonym środowisku, bo zajmuje niemal połowę pasma i zwiększa interferencję. Dodatkowo pasmo jest współdzielone z Bluetooth, kuchenkami mikrofalowymi, bezprzewodowymi kamerami i innymi urządzeniami.</p>
 <h4>Pasmo 5 GHz</h4>
 <p>W paśmie 5 GHz numeracja kanałów jest ustalona co 5 MHz od częstotliwości 5000 MHz (<span data-m=\"f = 5000 + 5n\"></span> MHz), lecz standardowo używa się kanałów rozłożonych co 4 numery (20 MHz). W Europie dostępne są m.in.:</p>
@@ -3546,7 +3546,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <li>Jeśli ACK nie nadejdzie w oczekiwanym czasie, stacja uznaje kolizję lub zakłócenie, <strong>podwaja okno rywalizacji</strong> (binary exponential backoff): <span data-m=\"CW \\leftarrow 2\\,(CW+1) - 1\"></span> do wartości maksymalnej <span data-m=\"CW_{max}\"></span>, i ponawia próbę (do limitu retransmisji; typowo 7 dla krótkich ramek).</li>
 </ol>
 <p>Losowy backoff zapobiega temu, że po zwolnieniu się medium wszystkie oczekujące stacje ruszą jednocześnie.</p>
-<p><img alt=\"Sekwencja dostępu do medium CSMA/CA: DIFS, backoff, ramka danych, SIFS i ACK oraz zachowanie stacji odczuwającej NAV\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/csma-ca-sekwencja.svg\" /></p>
+<p><img alt=\"Sekwencja dostępu do medium CSMA/CA: DIFS, backoff, ramka danych, SIFS i ACK oraz zachowanie stacji odczuwającej NAV\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/csma-ca-sekwencja.svg\" /></p>
 <p><strong>Odstępy czasowe (przykładowe wartości):</strong></p>
 <table>
 <thead>
@@ -3844,7 +3844,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <h3>6.4. DSL — cyfrowa linia abonencka</h3>
 <h4>Idea</h4>
 <p>Kabel telefoniczny (skrętka miedziana) doprowadzony do niemal każdego domu jest zdolny do przenoszenia sygnałów o częstotliwościach dużo wyższych niż pasmo głosowe (do ok. 4 kHz wykorzystywane w telefonii). Technologie <strong>DSL (Digital Subscriber Line)</strong> wykorzystują <strong>wyższe częstotliwości</strong> tej samej pary przewodów do przesyłania danych, <strong>równolegle</strong> z klasyczną usługą telefoniczną (POTS), bez zajmowania linii. Rodzina technologii zbiorczo oznaczana jest <strong>xDSL</strong>.</p>
-<p><img alt=\"Architektura dostępu DSL: lokal abonenta z modemem i splitterem, pętla lokalna, DSLAM i BNG w centrali oraz podział pasma ADSL\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/dsl-architektura.svg\" /></p>
+<p><img alt=\"Architektura dostępu DSL: lokal abonenta z modemem i splitterem, pętla lokalna, DSLAM i BNG w centrali oraz podział pasma ADSL\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/dsl-architektura.svg\" /></p>
 <h4>Elementy architektury</h4>
 <ul>
 <li><strong>Modem/router DSL</strong> u abonenta.</li>
@@ -4204,7 +4204,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p><strong>VPN przez Internet.</strong> Tania alternatywa dla łączy dzierżawionych: zaszyfrowane <strong>tunele</strong> przez publiczny Internet, np. <strong>IPsec</strong> (IKEv2 + ESP), <strong>SSL/TLS VPN</strong>, <strong>WireGuard</strong>. Zapewniają poufność i uwierzytelnienie, ale nie gwarantują jakości usług (opóźnień, utraty pakietów), ponieważ ruch przechodzi przez sieć „best effort\".</p>
 <p><strong>SD-WAN (Software-Defined WAN).</strong> Rozwiązanie łączące wiele łączy (światłowodowe, kablowe, LTE/5G, MPLS) w jedną <strong>nakładkę logiczną</strong> (overlay) sterowaną centralnie. Kontroler dobiera ścieżkę dla aplikacji na podstawie bieżącej jakości łączy (opóźnienie, jitter, straty), zapewniając redundancję i optymalizację kosztów; tunele są szyfrowane, a konfiguracja nowych oddziałów może być zautomatyzowana (<strong>zero-touch provisioning</strong>).</p>
 <h4>Topologie WAN</h4>
-<p><img alt=\"Topologie WAN: punkt–punkt, gwiazda (hub-and-spoke) i pełna siatka wraz ze wzorami na liczbę łączy\" src=\"/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/wan-topologie.svg\" /></p>
+<p><img alt=\"Topologie WAN: punkt–punkt, gwiazda (hub-and-spoke) i pełna siatka wraz ze wzorami na liczbę łączy\" src=\"/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/wan-topologie.svg\" /></p>
 <ul>
 <li><strong>Punkt–punkt</strong> — jedno dedykowane łącze między dwiema lokalizacjami; proste, przewidywalne, lecz nieekonomiczne dla wielu lokalizacji.</li>
 <li><strong>Gwiazda (hub-and-spoke)</strong> — oddziały łączą się z centralą; koszt rośnie liniowo (n − 1 łączy), ale ruch między oddziałami przechodzi przez centralę (dodatkowe opóźnienie), a centrala jest punktem awarii.</li>
@@ -4446,7 +4446,7 @@ class __TwigTemplate_fa02d8b3abb7e9424986c772af7ce89c_sourced extends Template
 <p><strong>Zadanie 1.</strong> Symbol: <span data-m=\"12{,}8 + 1{,}6 = 14{,}4\"></span> µs. Na jeden strumień: <span data-m=\"1960 \\cdot 10 \\cdot 0{,}75 = 14\\,700\"></span> bitów, czyli <span data-m=\"14\\,700 / 14{,}4\\ \\mu\\text{s} \\approx 1020{,}8\"></span> Mb/s. Dla dwóch strumieni: <strong>ok. 2041,7 Mb/s (ok. 2,04 Gb/s)</strong>.</p>
 <p><strong>Zadanie 2.</strong> <span data-m=\"\\text{FSPL} = 20\\log_{10}(30) + 20\\log_{10}(f) - 27{,}55\"></span>. Dla 2450 MHz: <span data-m=\"29{,}54 + 67{,}78 - 27{,}55 \\approx 69{,}8\"></span> dB. Dla 5500 MHz: <span data-m=\"29{,}54 + 74{,}81 - 27{,}55 \\approx 76{,}8\"></span> dB. Różnica wynosi <strong>ok. 7,0 dB</strong> (czyli <span data-m=\"20\\log_{10}(5500/2450)\"></span>).</p>
 <p><strong>Zadanie 3.</strong> Straty: <span data-m=\"12 \\cdot 0{,}22 = 2{,}64\"></span> dB (włókno) <span data-m=\"+ 5 \\cdot 0{,}08 = 0{,}4\"></span> dB (spawy) <span data-m=\"+ 2 \\cdot 0{,}5 = 1{,}0\"></span> dB (złącza) <span data-m=\"+ 3\"></span> dB (margines) <span data-m=\"= \\mathbf{7{,}04}\"></span> dB. Budżet: <span data-m=\"-3 - (-18) = 15\"></span> dB. Rezerwa ponad zaplanowany margines to <span data-m=\"15 - 7{,}04 \\approx 7{,}96\"></span> dB, więc <strong>łącze zadziała z dużym zapasem</strong>. (Uwaga: dla bardzo krótkich łączy problemem bywa nadmiar mocy, wymagający tłumika.)</p>
-<p><strong>Zadanie 4.</strong> SNR = 25 dB → 316,2 razy. <span data-m=\"C = 20\\cdot 10^6 \\cdot \\log_2(1 + 316{,}2) \\approx 20\\cdot 10^6 \\cdot 8{,}31 \\approx \\mathbf{166{,}2}\"></span> Mb/s. Przepływność Wi-Fi 4 1×1 (72,2 Mb/s) stanowi około 43 % tej granicy — pokazuje to, że rzeczywiste systemy pracują poniżej granicy Shannona i że ich rozwój (wyższe modulacje, lepsze kodowanie, więcej strumieni MIMO) zmierza do jej przybliżania lub jej „obejścia\" przez zwielokrotnienie kanałów przestrzennych.</p>", "@Page:/var/www/html/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci", "");
+<p><strong>Zadanie 4.</strong> SNR = 25 dB → 316,2 razy. <span data-m=\"C = 20\\cdot 10^6 \\cdot \\log_2(1 + 316{,}2) \\approx 20\\cdot 10^6 \\cdot 8{,}31 \\approx \\mathbf{166{,}2}\"></span> Mb/s. Przepływność Wi-Fi 4 1×1 (72,2 Mb/s) stanowi około 43 % tej granicy — pokazuje to, że rzeczywiste systemy pracują poniżej granicy Shannona i że ich rozwój (wyższe modulacje, lepsze kodowanie, więcej strumieni MIMO) zmierza do jej przybliżania lub jej „obejścia\" przez zwielokrotnienie kanałów przestrzennych.</p>", "@Page:/var/www/html/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci", "");
     }
     
     public function ensureSecurityChecked(): void

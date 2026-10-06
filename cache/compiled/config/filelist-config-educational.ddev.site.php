@@ -3,7 +3,7 @@ return [
     '@class' => 'Grav\\Common\\Service\\ConfigServiceProvider',
     'type' => 'config',
     'environment' => 'educational.ddev.site',
-    'timestamp' => 1791228287,
+    'timestamp' => 1791260086,
     'check_interval' => 2,
     'directories' => [
         '/var/www/html/user/config' => 1791209689,
@@ -47,7 +47,7 @@ return [
         '/var/www/html/user/config/plugins/devtools.yaml' => 1791210227,
         '/var/www/html/user/config/plugins/login.yaml' => 1791227043,
         '/var/www/html/user/config/site.yaml' => 1791225619,
-        '/var/www/html/user/config/system.yaml' => 1791228283,
+        '/var/www/html/user/config/system.yaml' => 1791260081,
         '/var/www/html/user/config/themes/quark2.yaml' => 1791209689,
         '/var/www/html/user/config/versions.yaml' => 1791209430,
         '/var/www/html/system/config/backups.yaml' => 1791209378,
@@ -107,7 +107,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1791228283
+                'modified' => 1791260081
             ],
             'themes/quark2' => [
                 'file' => 'user/config/themes/quark2.yaml',

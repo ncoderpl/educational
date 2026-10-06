@@ -1,0 +1,21 @@
+state: enabled
+email: lsk@lsk
+fullname: lsk
+title: ''
+access:
+  site:
+    login: true
+    lsk: false
+    mysql: false
+    isi: false
+    testy: true
+  admin:
+    login: false
+    super: false
+created: 1791211032
+modified: 1791211236
+language: ''
+content_editor: ''
+groups: {  }
+api_tokens_valid_after: 1791211236
+hashed_password: $2y$12$5JIoxwm6PdV8b1aXqt2qUukgwEUjv7gbG8VzM.F8Xo3Jh2wLl3u16

@@ -1,7 +1,7 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\File\\CompiledMarkdownFile',
-    'filename' => '/var/www/html/user/pages/05.lsk/01.media_transmisyjne_i_standardy_sieci/docs.md',
+    'filename' => '/var/www/html/user/pages/05.lsk/04.media_transmisyjne_i_standardy_sieci/docs.md',
     'modified' => 1791227872,
     'size' => 116581,
     'data' => [

@@ -1,0 +1,39 @@
+<?php
+return [
+    '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
+    'filename' => '/var/www/html/user/accounts/kamil.yaml',
+    'modified' => 1791258313,
+    'size' => 437,
+    'data' => [
+        'state' => 'enabled',
+        'email' => 'kamilzuk@gmail.com',
+        'fullname' => 'Kamil',
+        'title' => 'Administrator',
+        'access' => [
+            'site' => [
+                'login' => true,
+                'testy' => true,
+                'lsk' => true,
+                'mysql' => true,
+                'sso' => true
+            ],
+            'api' => [
+                'super' => true
+            ]
+        ],
+        'hashed_password' => '$2y$12$dXOD4To0FGoIWijd6phL0uR6tYPXSxit52Uzgom1vQg5p9WUNYWXy',
+        'created' => 1791209457,
+        'modified' => 1791209457,
+        'avatar' => [
+            
+        ],
+        'twofa_enabled' => false,
+        'twofa_secret' => '',
+        'admin_next' => [
+            'preferences' => [
+                'pagesViewMode' => 'tree',
+                'editorMode' => 'expert'
+            ]
+        ]
+    ]
+];

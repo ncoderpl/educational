@@ -37,7 +37,7 @@
                     </div>
                 {% endif %}
 
-                <footer class="hx-pager">
+                {# <footer class="hx-pager">
                     {% set prev = page.prevSibling %}
                     {% set next = page.nextSibling %}
                     {% if prev and prev.visible %}
@@ -46,7 +46,7 @@
                     {% if next and next.visible %}
                         <a class="hx-pager-link text-end" href="{{ next.url }}"><small>Następna</small><span>{{ next.title }} →</span></a>
                     {% endif %}
-                </footer>
+                </footer> #}
 
                 <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
                     <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>

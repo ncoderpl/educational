@@ -161,63 +161,83 @@ class __TwigTemplate_250f740c0ba9d4021a7fcf4e21baa21f_sourced extends Template
         }
         // line 38
         yield "
-                <footer class=\"hx-pager\">
+              <footer class=\"hx-pager\">
                     ";
-        // line 40
-        $context["prev"] = CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "prevSibling", [], "any", false, false, false, 40);
         // line 41
         yield "                    ";
-        $context["next"] = CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "nextSibling", [], "any", false, false, false, 41);
+        $context["collection"] = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "parent", [], "any", false, false, false, 41), "children", [], "any", false, false, false, 41), "visible", [], "any", false, false, false, 41);
         // line 42
-        yield "                    ";
-        if (((($tmp = ($context["prev"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp) && (($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["prev"] ?? null), "visible", [], "any", false, false, false, 42)) && $tmp instanceof Markup ? (string) $tmp : $tmp))) {
-            // line 43
-            yield "                        <a class=\"hx-pager-link\" href=\"";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["prev"] ?? null), "url", [], "any", false, false, false, 43), "html", null, true);
-            yield "\"><small>Poprzednia</small><span>← ";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["prev"] ?? null), "title", [], "any", false, false, false, 43), "html", null, true);
-            yield "</span></a>
+        yield "
                     ";
-        } else {
-            // line 44
-            yield "<span></span>";
-        }
+        // line 44
+        yield "                    ";
+        $context["prev"] = CoreExtension::getAttribute($this->env, $this->source, ($context["collection"] ?? null), "prevSibling", [CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "path", [], "any", false, false, false, 44)], "method", false, false, false, 44);
         // line 45
         yield "                    ";
-        if (((($tmp = ($context["next"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp) && (($tmp = CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "visible", [], "any", false, false, false, 45)) && $tmp instanceof Markup ? (string) $tmp : $tmp))) {
-            // line 46
-            yield "                        <a class=\"hx-pager-link text-end\" href=\"";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "url", [], "any", false, false, false, 46), "html", null, true);
-            yield "\"><small>Następna</small><span>";
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "title", [], "any", false, false, false, 46), "html", null, true);
-            yield " →</span></a>
+        $context["next"] = CoreExtension::getAttribute($this->env, $this->source, ($context["collection"] ?? null), "nextSibling", [CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "path", [], "any", false, false, false, 45)], "method", false, false, false, 45);
+        // line 46
+        yield "
+                    ";
+        // line 47
+        if ((($tmp = ($context["next"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 48
+            yield "                         <a class=\"hx-pager-link text-end\" href=\"";
+            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "url", [], "any", false, false, false, 48), "html", null, true);
+            yield "\">
+                            <small>Poprzednia Lekcja</small>
+                            <span>← ";
+            // line 50
+            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["next"] ?? null), "title", [], "any", false, false, false, 50), "html", null, true);
+            yield " </span>
+                        </a>
+                    ";
+        } else {
+            // line 53
+            yield "                        <span></span>
                     ";
         }
-        // line 48
+        // line 55
+        yield "
+                    ";
+        // line 56
+        if ((($tmp = ($context["prev"] ?? null)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 57
+            yield "                       <a class=\"hx-pager-link\" href=\"";
+            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["prev"] ?? null), "url", [], "any", false, false, false, 57), "html", null, true);
+            yield "\">
+                            <small>Następna Lekcja</small>
+                            <span>";
+            // line 59
+            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["prev"] ?? null), "title", [], "any", false, false, false, 59), "html", null, true);
+            yield " →</span>
+                        </a>
+                    ";
+        }
+        // line 62
         yield "                </footer>
 
                 <div class=\"hx-meta d-flex flex-wrap justify-content-between gap-2\">
                     <span>Ostatnia aktualizacja: ";
-        // line 51
-        yield (string) $this->escaper->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "modified", [], "any", false, false, false, 51), "d.m.Y"), "html", null, true);
+        // line 65
+        yield (string) $this->escaper->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "modified", [], "any", false, false, false, 65), "d.m.Y"), "html", null, true);
         yield "</span>
                     ";
-        // line 52
-        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "theme", [], "any", false, false, false, 52), "github_edit_url", [], "any", false, false, false, 52)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-            // line 53
+        // line 66
+        if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "theme", [], "any", false, false, false, 66), "github_edit_url", [], "any", false, false, false, 66)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+            // line 67
             yield "                        <a href=\"";
-            yield (string) $this->escaper->escape(Twig\Extension\CoreExtension::trim(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "theme", [], "any", false, false, false, 53), "github_edit_url", [], "any", false, false, false, 53), "/", "right"), "html", null, true);
-            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "relativePagePath", [], "any", false, false, false, 53), "html", null, true);
+            yield (string) $this->escaper->escape(Twig\Extension\CoreExtension::trim(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, ($context["config"] ?? null), "theme", [], "any", false, false, false, 67), "github_edit_url", [], "any", false, false, false, 67), "/", "right"), "html", null, true);
+            yield (string) $this->escaper->escape(CoreExtension::getAttribute($this->env, $this->source, ($context["page"] ?? null), "relativePagePath", [], "any", false, false, false, 67), "html", null, true);
             yield "\" target=\"_blank\" rel=\"noopener\">Edytuj tę stronę na GitHubie ↗</a>
                     ";
         }
-        // line 55
+        // line 69
         yield "                </div>
 
                 ";
-        // line 57
-        yield from $this->load("partials/footer.html.twig", 57)->unwrap()->yield($context);
-        // line 58
+        // line 71
+        yield from $this->load("partials/footer.html.twig", 71)->unwrap()->yield($context);
+        // line 72
         yield "            </article>
 
             <aside class=\"hx-toc d-none d-xl-block\">
@@ -262,7 +282,7 @@ class __TwigTemplate_250f740c0ba9d4021a7fcf4e21baa21f_sourced extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  221 => 58,  219 => 57,  215 => 55,  208 => 53,  206 => 52,  202 => 51,  197 => 48,  189 => 46,  186 => 45,  183 => 44,  175 => 43,  172 => 42,  169 => 41,  167 => 40,  163 => 38,  159 => 36,  148 => 32,  144 => 31,  140 => 30,  137 => 29,  133 => 28,  130 => 27,  128 => 26,  122 => 23,  118 => 21,  112 => 20,  108 => 19,  101 => 16,  94 => 15,  86 => 13,  83 => 12,  79 => 11,  75 => 10,  69 => 6,  67 => 5,  64 => 4,  57 => 3,  46 => 1,);
+        return array (  241 => 72,  239 => 71,  235 => 69,  228 => 67,  226 => 66,  222 => 65,  217 => 62,  211 => 59,  205 => 57,  203 => 56,  200 => 55,  196 => 53,  190 => 50,  184 => 48,  182 => 47,  179 => 46,  176 => 45,  173 => 44,  170 => 42,  167 => 41,  163 => 38,  159 => 36,  148 => 32,  144 => 31,  140 => 30,  137 => 29,  133 => 28,  130 => 27,  128 => 26,  122 => 23,  118 => 21,  112 => 20,  108 => 19,  101 => 16,  94 => 15,  86 => 13,  83 => 12,  79 => 11,  75 => 10,  69 => 6,  67 => 5,  64 => 4,  57 => 3,  46 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -305,14 +325,28 @@ class __TwigTemplate_250f740c0ba9d4021a7fcf4e21baa21f_sourced extends Template
                     </div>
                 {% endif %}
 
-                <footer class=\"hx-pager\">
-                    {% set prev = page.prevSibling %}
-                    {% set next = page.nextSibling %}
-                    {% if prev and prev.visible %}
-                        <a class=\"hx-pager-link\" href=\"{{ prev.url }}\"><small>Poprzednia</small><span>← {{ prev.title }}</span></a>
-                    {% else %}<span></span>{% endif %}
-                    {% if next and next.visible %}
-                        <a class=\"hx-pager-link text-end\" href=\"{{ next.url }}\"><small>Następna</small><span>{{ next.title }} →</span></a>
+              <footer class=\"hx-pager\">
+                    {# Pobieramy kolekcję widocznych stron rodzica, ułożoną według domyślnego sortowania #}
+                    {% set collection = page.parent.children.visible %}
+
+                    {# Metody adjacent() zwracają bezpiecznie sąsiednie strony lub null #}
+                    {% set prev = collection.prevSibling(page.path) %}
+                    {% set next = collection.nextSibling(page.path) %}
+
+                    {% if next %}
+                         <a class=\"hx-pager-link text-end\" href=\"{{ next.url }}\">
+                            <small>Poprzednia Lekcja</small>
+                            <span>← {{ next.title }} </span>
+                        </a>
+                    {% else %}
+                        <span></span>
+                    {% endif %}
+
+                    {% if prev %}
+                       <a class=\"hx-pager-link\" href=\"{{ prev.url }}\">
+                            <small>Następna Lekcja</small>
+                            <span>{{ prev.title }} →</span>
+                        </a>
                     {% endif %}
                 </footer>
 
