@@ -27,7 +27,7 @@
                {% if page.children.visible.count %}
                     <div class="row g-3 mt-3 hx-child-cards">
                         {% for child in page.children.visible %}
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <a href="{{ child.url }}" class="hx-card d-block h-100">
                                     {# ZMIANA: Dodano loop.index obok tytułu #}
                                     <h3 class="mt-0">
