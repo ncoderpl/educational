@@ -10,29 +10,27 @@
                     {% set is_branch_active = section.active or section.activeChild %}
 
                     {% if section.children.visible.count %}
-                        <details class="hx-group {{ is_branch_active ? 'is-active-branch' : '' }}" {{ is_branch_active ? 'open' : '' }}>
+                        {# Atrybut name="nav-sections" sprawia, że rozwinięcie jednego kursu zwinie pozostałe #}
+                        <details name="nav-sections" class="hx-group {{ is_branch_active ? 'is-active-branch' : '' }}" {{ is_branch_active ? 'open' : '' }}>
                             <summary class="hx-group-title">
                                 <span>{{ section.menu }}</span>
                                 <svg class="hx-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                             </summary>
                             <ul class="list-unstyled mb-0 hx-group-list">
-                                {# Index rozdziału (chapter) - bez numeracji #}
                                 <li><a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}"> Lista wpisów </a></li>
 
-                                {# Właściwe lekcje - z numeracją #}
                                 {% for child in section.children.visible %}
                                     {% if child.children.visible.count %}
                                         <li>
-                                            <details class="hx-subgroup" {{ child.active or child.activeChild ? 'open' : '' }}>
+                                            {# Atrybut name dla podkategorii zamyka inne moduły w tym samym kursie #}
+                                            <details name="nav-sub-{{ section.slug }}" class="hx-subgroup" {{ child.active or child.activeChild ? 'open' : '' }}>
                                                 <summary class="hx-nav-link hx-sub-summary {{ child.active ? 'active' : '' }}">
                                                     <span><span class="opacity-50 me-1">{{ loop.index }}.</span>{{ child.menu }}</span>
                                                     <svg class="hx-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                                                 </summary>
                                                 <ul class="list-unstyled hx-nav-sub">
-                                                    {# Index podrozdziału - bez numeracji #}
                                                     <li><a class="hx-nav-link {{ child.active ? 'active' : '' }}" href="{{ child.url }}"> Lista wpisów </a></li>
 
-                                                    {# Właściwe pod-lekcje - z numeracją #}
                                                     {% for sub in child.children.visible %}
                                                         <li><a class="hx-nav-link {{ sub.active ? 'active' : '' }}" href="{{ sub.url }}"><span class="opacity-50 me-1">{{ loop.index }}.</span>{{ sub.menu }}</a></li>
                                                     {% endfor %}
@@ -46,7 +44,6 @@
                             </ul>
                         </details>
                     {% else %}
-                        {# Pojedynczy kurs/sekcja bez podstron #}
                         <div class="hx-group {{ is_branch_active ? 'is-active-branch' : '' }}">
                             <a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}">{{ section.menu }}</a>
                         </div>
