@@ -1,12 +1,12 @@
-/: 74
+/: 77
 /typography: 8
 /mysql: 22
 /error: 438
 /sso: 23
 /lsk: 71
 /lsk/media_transmisyjne_i_standardy_sieci: 41
-/login: 114
-/user_unauthorized: 65
+/login: 115
+/user_unauthorized: 68
 /sso/media_transmisyjne_i_standardy_sieci: 26
 /mysql/media_transmisyjne_i_standardy_sieci: 1
 /eutk: 8
@@ -17,8 +17,8 @@
 /lsk/wstep-do-lokalnych-sieci-komputerowych-lan: 31
 /lsk/prezentacje: 26
 /lsk/struktura-ramki-ethernet-i-adresacja-fizyczna-mac: 3
-/testy: 6
-/testy/lsk: 5
-/lsk/urzadzenia-warstwy-dostepu-do-sieci: 9
+/testy: 7
+/testy/lsk: 7
+/lsk/urzadzenia-warstwy-dostepu-do-sieci: 10
 /lsk/warstwa-dostepowa-i-technologia-ethernet: 7
 /lsk/warstwa-sieciowa-protokoly-ipv4-i-ipv6: 4

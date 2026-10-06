@@ -1,13 +1,13 @@
 state: enabled
-email: mysql@mysql
-fullname: 'Select#MySQL26'
+email: sso@sso.sso
+fullname: 'SSO'
 title: ''
 access:
   site:
   login: true
   psp: false
-  sso: false
-  mysql: true
+  sso: true
+  mysql: false
   lsk: false
   eup: false
   mielsk-1k: false
@@ -25,4 +25,5 @@ content_editor: ''
 groups: {  }
 api_tokens_valid_after: 1791211484
 hashed_password: $2y$12$45h0gOO3UlqIqm8rdN43NOKcmay/4QeuyNvLt2QMTqXNnjOB57p9S
-#password: Select#MySQL
+# password: Proces#SSO26
+password: Proces#SSO26

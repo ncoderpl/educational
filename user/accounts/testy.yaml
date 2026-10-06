@@ -4,11 +4,17 @@ fullname: lsk
 title: ''
 access:
   site:
-    login: true
-    lsk: false
-    mysql: false
-    isi: false
-    testy: true
+  login: true
+  psp: true
+  sso: true
+  mysql: true
+  lsk: true
+  eup: true
+  mielsk-1k: true
+  mielsk-2k: true
+  mielsk-3k: true
+  isi: true
+  testy: true
   admin:
     login: false
     super: false

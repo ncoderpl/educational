@@ -1,20 +1,20 @@
 state: enabled
-email: mysql@mysql
-fullname: 'Select#MySQL26'
+email: psp@psp.psp
+fullname: 'PSP'
 title: ''
 access:
   site:
-  login: true
-  psp: false
-  sso: false
-  mysql: true
-  lsk: false
-  eup: false
-  mielsk-1k: false
-  mielsk-2k: false
-  mielsk-3k: false
-  isi: false
-  testy: false
+    login: true
+    psp: true
+    sso: false
+    mysql: false
+    lsk: false
+    eup: false
+    mielsk-1k: false
+    mielsk-2k: false
+    mielsk-3k: false
+    isi: false
+    testy: false
   admin:
     login: false
     super: false
@@ -25,4 +25,5 @@ content_editor: ''
 groups: {  }
 api_tokens_valid_after: 1791211484
 hashed_password: $2y$12$45h0gOO3UlqIqm8rdN43NOKcmay/4QeuyNvLt2QMTqXNnjOB57p9S
-#password: Select#MySQL
+# password: Kernel#Tux26
+password: Kernel#Tux26
