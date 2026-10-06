@@ -4,17 +4,17 @@ fullname: isi
 title: ''
 access:
   site:
-  login: true
-  psp: false
-  sso: false
-  mysql: false
-  lsk: false
-  eup: false
-  mielsk-1k: false
-  mielsk-2k: false
-  mielsk-3k: false
-  isi: true
-  testy: false
+    login: true
+    psp: false
+    sso: false
+    mysql: false
+    lsk: false
+    eup: false
+    mielsk-1k: false
+    mielsk-2k: false
+    mielsk-3k: false
+    isi: true
+    testy: false
   admin:
     login: false
     super: false
