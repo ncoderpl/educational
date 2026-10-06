@@ -6,6 +6,7 @@
     <main class="hx-main docs" id="docs"">
         <div class="hx-article-wrap">
             <article class="hx-article">
+                {% include "partials/hero.html.twig" %}
                 <nav class="hx-breadcrumbs" aria-label="breadcrumb">
                     <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
                     {% for crumb in page.parents|reverse %}
@@ -16,7 +17,6 @@
                     <span>/</span><span class="current">{{ page.menu }}</span>
                 </nav>
 
-                <h1 class="hx-title">{{ page.title }}</h1>
                 {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
 
                 <div class="doc-content" id="docContent">
@@ -36,7 +36,7 @@
                     </div>
                 {% endif %}
 
-                {% include "partials/docs-footer.html.twig %}
+                {% include "partials/docs-footer.html.twig" %}
 
                 <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
                     <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>

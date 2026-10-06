@@ -19,5 +19,8 @@ twofa_enabled: false
 twofa_secret: ''
 admin_next:
   preferences:
-    pagesViewMode: tree
+    pagesViewMode: miller
     editorMode: expert
+    accentHue: 25
+    accentSaturation: 95
+    adminLanguage: pl-PL

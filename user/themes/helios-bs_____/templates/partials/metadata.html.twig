@@ -1,6 +1,0 @@
-{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
-<meta name="description" content="{{ (header.metadata.description ?: site.metadata.description)|e('html_attr') }}">
-<meta name="generator" content="GravCMS">
-<meta property="og:title" content="{{ (header.title ?: site.title)|e('html_attr') }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ page.url(true, true) }}">

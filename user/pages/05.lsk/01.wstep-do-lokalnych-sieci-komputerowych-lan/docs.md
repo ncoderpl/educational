@@ -3,6 +3,7 @@ title: 'Wstęp do lokalnych sieci komputerowych (LAN)'
 published: true
 ---
 
+## Wprowadzenie
 Lokalne sieci komputerowe — **LAN (Local Area Network)** — stanowią fundament współczesnej infrastruktury IT. To właśnie w sieciach LAN pracują stacje robocze, serwery, drukarki sieciowe, urządzenia IoT, systemy monitoringu oraz aplikacje biznesowe. Sieć lokalna umożliwia szybkie i bezpieczne przesyłanie danych na ograniczonym obszarze: w domu, biurze, szkole, magazynie czy kampusie firmowym.
 
 ## Czym jest sieć LAN?
