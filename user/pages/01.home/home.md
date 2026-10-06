@@ -1,4 +1,7 @@
 ---
-title: EDU
-body_classes: title-center title-h1h2
+title: Strona główna
+sidebar: false
+body_classes: home
 ---
+
+Tutaj tekst wstępny do strony głównej (jeśli jakiś chcesz pod Hero).

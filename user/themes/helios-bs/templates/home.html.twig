@@ -1,46 +1,63 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block body %}
-<div class="hx-shell">
-    {% include 'partials/sidebar.html.twig' %}
-
-    <main class="hx-main">
+<div class="hx-shell" style="max-width: none !important; width: 100% !important; margin: 0; padding: 0;">
+    
+    {# Sprawdzamy sidebar - w home.md powinien być wyłączony w YAML #}
+    {% if page.header.sidebar != false %}
+        {% include 'partials/sidebar.html.twig' %}
+    {% endif %}
+    
+    {# KLUCZOWA ZMIANA: Dodajemy margin-left: 0 gdy nie ma sidebara, aby anulować pustą przestrzeń #}
+    <main class="hx-main" style="{% if page.header.sidebar == false %}margin-left: 0 !important;{% endif %} max-width: none !important; width: 100% !important; padding: 0 5%; flex: 1;">
+        
         {% include "partials/hero.html.twig" %}
 
-        <section class="container hx-home-body">
+        <section class="hx-home-body mt-4" style="max-width: none !important; width: 100% !important;">
+            
             <div class="doc-content">{{ page.content|raw }}</div>
 
-            <div class="row g-3 mt-2">
-                {% for section in pages.children.visible %}
-                    {% if not section.home %}
-                        {% set count = section.children.visible|length %}
-                        <div class="col-md-6 col-xl-4">
-                            <a href="{{ section.url }}" class="hx-card d-block h-100 position-relative">
-                                <div class="d-flex justify-content-between align-items-start mb-2">
-                                    <div class="hx-card-icon">{{ section.header.icon ?: '▣' }}</div>
-                                    <span class="badge bg-light text-dark border">
-                                        {{ count }}
-                                        {% if count == 1 %}
-                                            wpis
-                                        {% elseif count % 10 in [2, 3, 4] and count % 100 not in [12, 13, 14] %}
-                                            wpisy
-                                        {% else %}
-                                            wpisów
-                                        {% endif %}
-                                    </span>
-                                </div>
-                                <h3>{{ section.menu }}</h3>
-                                <p>{{ section.header.lead ?: section.summary|striptags|slice(0, 110) }}</p>
+            {# --- KAFELKI KURSÓW / MATERIAŁÓW --- #}
+            <h2 class="mt-5 mb-4 border-bottom pb-2">Materiały i Kursy</h2>
+            
+            <div class="row g-4 m-0" style="width: 100%;">
+                {% set materials = page.find('/classess') %}
+                {% if materials %}
+                    {% for course in materials.children.visible %}
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="{{ course.url }}" class="hx-card d-block h-100 position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover">
+                                <div class="hx-card-icon mb-3">{{ course.header.icon ?: '📚' }}</div>
+                                <h3 class="h5 mb-2 text-body">{{ course.title }}</h3>
+                                <p class="text-muted small mb-0">{{ course.summary|striptags|slice(0, 110) ~ '...' }}</p>
                             </a>
                         </div>
-                    {% endif %}
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            {# --- KAFELKI BLOGA (6 WPISÓW) --- #}
+            <h2 class="mt-5 mb-4 border-bottom pb-2">Aktualności z bloga</h2>
+            
+            <div class="row g-4 m-0 mb-5" style="width: 100%;">
+                {% set blog = page.find('/news') %}
+                {% if blog %}
+                    {% for post in blog.children.visible.order('date', 'desc').slice(0, 6) %}
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <a href="{{ post.url }}" class="hx-card d-block h-100 position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover">
+                                <span class="badge bg-secondary mb-3">{{ post.date|date("d.m.Y") }}</span>
+                                <h3 class="h5 mb-2 text-body">{{ post.title }}</h3>
+                                <p class="text-muted small mb-0">{{ post.summary|striptags|slice(0, 110) ~ '...' }}</p>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
 
-        <div class="container" style="max-width:1050px">
+        <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; margin-top: 50px;">
             {% include 'partials/footer.html.twig' %}
         </div>
+        
     </main>
 </div>
 {% endblock %}

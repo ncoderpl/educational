@@ -24,12 +24,15 @@
                     {{ page.content|raw }}
                 </div>
 
-                {% if page.children.visible.count %}
+               {% if page.children.visible.count %}
                     <div class="row g-3 mt-3 hx-child-cards">
                         {% for child in page.children.visible %}
                             <div class="col-sm-6">
                                 <a href="{{ child.url }}" class="hx-card d-block h-100">
-                                    <h3 class="mt-0">{{ child.title }}</h3>
+                                    {# ZMIANA: Dodano loop.index obok tytułu #}
+                                    <h3 class="mt-0">
+                                        <span class="opacity-50 me-1">{{ loop.index }}.</span>{{ child.title }}
+                                    </h3>
                                     <p>{{ child.header.lead ?: child.summary|striptags|trim|slice(0, 120) }}</p>
                                 </a>
                             </div>

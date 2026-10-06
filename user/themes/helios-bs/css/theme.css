@@ -1296,3 +1296,30 @@ details[open]>summary>.hx-chev {
     border-color: rgba(62, 194, 143, 0.35);
     color: #3ec28f;
 }
+
+/* Rozszerzenie kontenera artykułu na pełną szerokość, gdy lewy sidebar jest schowany */
+.hx-shell .hx-main.w-100 .hx-article-wrap {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* Opcjonalnie: poszerzenie samej kolumny z tekstem czytania, aby nie była zbyt wąska na szerokim ekranie */
+.hx-shell .hx-main.w-100 .hx-article {
+    max-width: 1200px !important; /* Domyślnie tekst artykułu ma często ok 800-900px, tu dajemy mu więcej miejsca */
+    margin: 0 auto; /* Centrujemy szeroki tekst wewnątrz nowej, wielkiej przestrzeni */
+}
+
+/* Wymuszenie pełnej szerokości artykułu poprzez dodanie klasy .wide-article do <body> */
+body.wide-article .hx-article-wrap {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+body.wide-article .hx-article {
+    max-width: 1200px !important;
+    margin: 0 auto;
+}

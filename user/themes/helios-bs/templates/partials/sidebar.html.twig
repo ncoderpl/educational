@@ -6,7 +6,10 @@
     <div class="offcanvas-body flex-column">
         <nav class="hx-nav" id="hxNav">
             {% for section in pages.children.visible %}
-                {% if not section.home %}
+                
+                {# --- Zmodyfikowany warunek: ukrywa strony ze slugiem 'home' oraz 'news' --- #}
+                {% if section.slug != 'home' and section.slug != 'news' %}
+                    
                     {% set is_branch_active = section.active or section.activeChild %}
 
                     {% if section.children.visible.count %}
@@ -17,7 +20,7 @@
                                 <svg class="hx-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
                             </summary>
                             <ul class="list-unstyled mb-0 hx-group-list">
-                                <li><a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}"> Lista wpisów </a></li>
+                                <li><a class="hx-nav-link {{ section.active ? 'active' : '' }}" href="{{ section.url }}"> Lista  </a></li>
 
                                 {% for child in section.children.visible %}
                                     {% if child.children.visible.count %}

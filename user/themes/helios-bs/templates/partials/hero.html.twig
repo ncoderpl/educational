@@ -1,9 +1,31 @@
-<section class="hx-hero text-center">
-    <div class="hx-hero-glow"></div>
+{# Sprawdzamy, czy w nagłówku YAML zdefiniowano obrazek tła #}
+{% set hero_img = page.header.hero_image ? page.media[page.header.hero_image] : null %}
+
+{# Jeśli jest obrazek, generujemy styl tła z przyciemnieniem. Jeśli nie - zostawiamy puste. #}
+{% set bg_style = hero_img ? 'background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(' ~ hero_img.url ~ '); background-size: cover; background-position: center; padding-top: 5rem; padding-bottom: 5rem;' : '' %}
+
+{# Klasa wymuszająca biały tekst na ciemnym zdjęciu #}
+{% set text_color = hero_img ? 'text-white' : '' %}
+
+<section class="hx-hero text-center" {% if hero_img %}style="{{ bg_style }}"{% endif %}>
+    
+    {# Oryginalna poświata motywu - pokazujemy ją tylko wtedy, gdy NIE MA zdjęcia w tle #}
+    {% if not hero_img %}
+        <div class="hx-hero-glow"></div>
+    {% endif %}
+    
     <div class="container position-relative">
-        {% if page.header.badge %}<span class="hx-badge">{{ page.header.badge }}</span>{% endif %}
-        <h1 class="hx-hero-title">{{ page.header.hero_title ?: page.title }}</h1>
-        {% if page.header.hero_subtitle %}<p class="hx-hero-sub">{{ page.header.hero_subtitle }}</p>{% endif %}
+        {% if page.header.badge %}
+            <span class="hx-badge">{{ page.header.badge }}</span>
+        {% endif %}
+        
+        <h1 class="hx-hero-title {{ text_color }}">{{ page.header.hero_title ?: page.title }}</h1>
+        
+        {# Obsługa zarówno oryginalnego hero_subtitle, jak i używanego wcześniej hero_text #}
+        {% if page.header.hero_subtitle or page.header.hero_text %}
+            <p class="hx-hero-sub {{ text_color }}">{{ page.header.hero_subtitle ?: page.header.hero_text }}</p>
+        {% endif %}
+        
         <div class="d-flex justify-content-center gap-2 flex-wrap mt-4">
             {% if page.header.hero_button_text %}
                 <a href="{{ page.header.hero_button_link ?: '#' }}" class="btn hx-btn-primary">{{ page.header.hero_button_text }}</a>

@@ -7,18 +7,10 @@
         <title>{% if page.title and not page.home %}{{ page.title|e }} | {% endif %}{{ site.title|e }}</title>
         {% include 'partials/metadata.html.twig' %}
         <script>
-            /* Motyw ustawiany przed renderowaniem, żeby uniknąć mignięcia */
             (function () {
                 var t = null;
-                try {
-                    t = localStorage.getItem("hx-theme");
-                } catch (e) {}
-                if (!t)
-                    t =
-                        window.matchMedia &&
-                        window.matchMedia("(prefers-color-scheme: light)").matches
-                            ? "light"
-                            : "dark";
+                try { t = localStorage.getItem("hx-theme"); } catch (e) {}
+                if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
                 document.documentElement.setAttribute("data-bs-theme", t);
             })();
         </script>
@@ -28,7 +20,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
     </head>
     <body>
-
         <header class="hx-topbar sticky-top">
             <div class="hx-topbar-inner d-flex align-items-center gap-2 gap-lg-3 px-3 px-lg-4">
                 <button class="btn btn-sm hx-icon-btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#hxSidebar" aria-label="Menu">
@@ -38,27 +29,21 @@
                     <span class="hx-logo"></span><span class="d-none d-sm-inline">{{ site.title }}</span>
                 </a>
 
-                {% set versions = config.theme.versions %}
-                {% if config.theme.current_version or versions %}
-                    <div class="dropdown">
-                        <button class="btn btn-sm hx-version dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ config.theme.current_version ?: 'Wersja' }}
-                        </button>
-                        {% if versions %}
-                            <ul class="dropdown-menu hx-dropdown">
-                                {% for v in versions %}
-                                    <li><a class="dropdown-item" href="{{ v.url }}">{{ v.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                    </div>
-                {% endif %}
-
                 <div class="hx-search ms-lg-3 flex-grow-1">
-                    <input id="hxSearch" type="search" class="form-control form-control-sm" placeholder="Szukaj w dokumentacji…" autocomplete="off" aria-label="Szukaj">
+                    <input id="hxSearch" type="search" class="form-control form-control-sm" placeholder="Szukaj…" autocomplete="off">
                     <span class="hx-kbd d-none d-md-inline"><kbd>Ctrl</kbd><kbd>K</kbd></span>
                     <div id="hxSearchResults" class="hx-search-results d-none"></div>
                 </div>
+
+                {# --- GÓRNE MENU --- #}
+                <nav class="d-none d-md-flex align-items-center gap-3 ms-3">
+                    {% for p in pages.children %}
+                        <a class="hx-toplink {{ (p.active or p.activeChild) ? 'active' : '' }}" href="{{ p.url }}">
+                            {{ p.menu|default(p.title) }}
+                        </a>
+                    {% endfor %}
+                </nav>
+                {# ------------------ #}
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-auto">
                     {% for link in config.theme.header_links %}
@@ -67,24 +52,10 @@
                 </nav>
 
                 <div class="d-flex align-items-center gap-2 ms-auto ms-md-0">
-                    <button id="hxThemeToggle" class="btn btn-sm hx-icon-btn" type="button" aria-label="Przełącz motyw jasny/ciemny" title="Jasny / ciemny">
+                    <button id="hxThemeToggle" class="btn btn-sm hx-icon-btn" type="button" title="Jasny / ciemny">
                         <svg class="hx-ico-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
                         <svg class="hx-ico-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
                     </button>
-
-                    {# Przycisk wylogowania widoczny tylko dla zalogowanych #}
-                    {% if grav.user.authenticated %}
-                        <a class="btn btn-sm hx-icon-btn d-inline-flex align-items-center justify-content-center"
-                           href="{{ uri.addNonce(base_url_relative ~ uri.path ~ '/task' ~ config.system.param_sep ~ 'login.logout', 'logout-form', 'logout-nonce') }}"
-                           title="Wyloguj ({{ grav.user.fullname ?: grav.user.username }})"
-                           aria-label="Wyloguj się">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                <polyline points="16 17 21 12 16 7"></polyline>
-                                <line x1="21" y1="12" x2="9" y2="12"></line>
-                            </svg>
-                        </a>
-                    {% endif %}
                 </div>
             </div>
         </header>
@@ -94,19 +65,5 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ url('theme://js/theme.js') }}"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                // Wyszukaj wszystkie elementy z atrybutem data-m
-                document.querySelectorAll("[data-m]").forEach(function (el) {
-                    var tex = el.getAttribute("data-m");
-                    if (tex) {
-                        katex.render(tex, el, {
-                            displayMode: true, // true dla wyśrodkowanego bloku wzoru
-                            throwOnError: false,
-                        });
-                    }
-                });
-            });
-        </script>
     </body>
 </html>

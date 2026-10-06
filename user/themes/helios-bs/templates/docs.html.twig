@@ -3,12 +3,17 @@
 {% block body %}
     <div class="hx-shell">
         {% include 'partials/sidebar.html.twig' %}
+        
         <main class="hx-main docs" id="docs">
-            <div class="hx-article-wrap">
-                <article class="hx-article">
+            
+            {# 1. Kontener na 100% szerokości. KLUCZOWE: padding-right rezerwuje bezpieczne miejsce na fixed sidebar uzywajac wbudowanej zmiennej z CSS #}
+            <div class="hx-article-wrap" style="max-width: 100%; padding-left: 2rem; padding-right: calc(var(--hx-toc-w) + 3rem) !important;">
+                
+                {# 2. Treść artykułu zajmuje maksa (flex: 1) z uwzględnieniem powyższego marginesu #}
+                <article class="hx-article" style="max-width: 100%; flex: 1; min-width: 0;">
+                    
                     {% include "partials/hero.html.twig" %}
 
-                    {# --- Zmieniony kontener: Breadcrumbs po lewej, Meta (czas i wyświetlenia) po prawej --- #}
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
                         <nav class="hx-breadcrumbs mb-0" aria-label="breadcrumb">
                             <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
@@ -20,10 +25,7 @@
                             <span>/</span><span class="current">{{ page.menu }}</span>
                         </nav>
 
-                        {# Statystyki: Czas czytania i Wyświetlenia #}
                         <div class="d-flex align-items-center gap-3" style="font-size: 0.85rem; color: var(--hx-muted);">
-
-                            {# Czas czytania (obliczany w locie: ilość słów / 200 słów na minutę) #}
                             {% set words = page.content|striptags|wordcount %}
                             {% set minutes = (words / 200)|round(0, 'ceil') %}
                             <span class="d-flex align-items-center gap-1" title="Szacowany czas czytania">
@@ -32,8 +34,7 @@
                                 {% include "partials/count.html.twig" %}
                             </span>
                         </div>
-                    </div>przeglądania tych materiałów.
-
+                    </div>
 
                     {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
 
@@ -67,12 +68,14 @@
 
                 </article>
 
-                <aside class="hx-toc d-none d-xl-block">
-                    <div class="hx-toc-inner">
+                {# 3. Prawy sidebar przypięty (FIXED) na stałe do prawej krawędzi ekranu #}
+                <aside class="hx-toc d-none d-xl-block" style="position: fixed !important; right: 2rem !important; top: calc(var(--hx-topbar-h) + 2.5rem) !important; width: var(--hx-toc-w) !important; z-index: 100;">
+                    <div class="hx-toc-inner" style="max-height: calc(100vh - 120px);">
                         <div class="hx-toc-title">Na tej stronie</div>
                         <ul class="list-unstyled mb-0" id="hxToc"></ul>
                     </div>
                 </aside>
+                
             </div>
         </main>
     </div>
