@@ -1,5 +1,9 @@
-{# Licznik wyświetleń (zewnętrzny badge hits.sh) #}
+{# Licznik wyświetleń (wtyczka count-views) #}
 <span class="d-flex align-items-center gap-1" title="Liczba wyświetleń tej strony">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-    <img src="https://hits.sh/{{ uri.host }}{{ uri.path }}.svg?style=flat-square&label=wyświetleń&color=8b7cff&labelColor=1b1b22" alt="Licznik" style="height: 18px; border-radius: 4px;">
+    <span>
+        <span class="number">
+            {{ viewcounts[page.route] ?? 0 }}
+        </span>
+        wyświetleń</span>
 </span>

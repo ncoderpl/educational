@@ -1,0 +1,13 @@
+{# Blog = jeden pod drugim, kurs = poziomo obok siebie #}
+{% set is_blog = page.route starts with '/news' %}
+
+{% set words = page.content|striptags|wordcount %}
+{% set minutes = (words / 200)|round(0, 'ceil') %}
+
+<div class="d-flex {{ is_blog ? 'flex-column align-items-start gap-1' : 'align-items-center gap-3' }}" style="font-size: 0.85rem; color: var(--hx-muted);">
+    <span class="d-flex align-items-center gap-1" title="Szacowany czas czytania">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        {{ minutes < 1 ? 1 : minutes }} min czytania
+    </span>
+    {% include "partials/count.html.twig" %}
+</div>

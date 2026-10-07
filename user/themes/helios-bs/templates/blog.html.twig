@@ -2,21 +2,15 @@
 
 {% block body %}
 <div class="hx-shell" style="max-width: none !important; width: 100% !important; margin: 0; padding: 0;">
-    
     {% if page.header.sidebar != false %}
         {% include 'partials/sidebar.html.twig' %}
     {% endif %}
-    
     <main class="hx-main" style="{% if page.header.sidebar == false %}margin-left: 0 !important;{% endif %} max-width: none !important; width: 100% !important; padding: 0 5%; flex: 1;">
-        
         <div class="row mt-5" style="width: 100%; margin: 0;">
-            
             {# --- LEWA KOLUMNA: TREŚĆ BLOGA --- #}
             <div class="col-lg-8 col-xl-9 px-0 px-lg-4">
                 <section class="hx-home-body" style="max-width: none !important; width: 100% !important;">
-                    
                     {% set cat_param = uri.param('category') %}
-                    
                     {% if cat_param %}
                         <div class="mb-5 pb-3 border-bottom">
                             <h1 class="display-5 fw-bold">Kategoria: {{ cat_param|capitalize|replace({'-': ' '}) }}</h1>
@@ -31,23 +25,34 @@
 
                     <div class="row g-4 m-0" style="width: 100%;">
                         {% set collection = page.collection() %}
-                        
                         {% if collection|length > 0 %}
                             {% for post in collection %}
+                                {# Obraz wyróżniający: header.image we wpisie, plik w folderze wpisu #}
+                                {% set cover = post.header.image ? post.media[post.header.image] : null %}
+
                                 <div class="col-sm-6 col-md-6 col-xl-4">
-                                    <a href="{{ post.url }}" class="hx-card d-flex flex-column h-100 position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover">
-                                        <div class="mb-2 d-flex justify-content-between align-items-start">
-                                            <span class="badge bg-secondary">{{ post.date|date("d.m.Y") }}</span>
-                                        </div>
-                                        <h3 class="h5 mb-3 text-body fw-bold">{{ post.title }}</h3>
-                                        <p class="text-muted small mb-3 flex-grow-1">{{ post.summary|striptags|slice(0, 100) ~ '...' }}</p>
-                                        {% if post.taxonomy.category %}
-                                            <div class="mt-auto pt-3 border-top">
-                                                {% for cat in post.taxonomy.category %}
-                                                    <span class="badge bg-light text-dark border">{{ cat }}</span>
-                                                {% endfor %}
+                                    <a href="{{ post.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
+
+                                        {% if cover %}
+                                            <div class="ratio ratio-16x9">
+                                                {{ cover.cropZoom(600, 338).attribute('loading', 'lazy').html(post.title, post.title, 'w-100 h-100 object-fit-cover')|raw }}
                                             </div>
                                         {% endif %}
+
+                                        <div class="d-flex flex-column flex-grow-1 p-4">
+                                            <div class="mb-2 d-flex justify-content-between align-items-start">
+                                                <span class="badge bg-secondary">{{ post.date|date("d.m.Y") }}</span>
+                                            </div>
+                                            <h3 class="h5 mb-3 text-body fw-bold">{{ post.title }}</h3>
+                                            <p class="text-muted small mb-3 flex-grow-1">{{ post.summary|striptags|slice(0, 100) ~ '...' }}</p>
+                                            {% if post.taxonomy.category %}
+                                                <div class="mt-auto pt-3 border-top">
+                                                    {% for cat in post.taxonomy.category %}
+                                                        <span class="badge bg-light text-dark border">{{ cat }}</span>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     </a>
                                 </div>
                             {% endfor %}
@@ -62,13 +67,11 @@
             <div class="col-lg-4 col-xl-3 mt-5 mt-lg-0">
                 {% include 'partials/blog-sidebar.html.twig' %}
             </div>
-            
         </div>
 
         <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; margin-top: 50px;">
             {% include 'partials/footer.html.twig' %}
         </div>
-        
     </main>
 </div>
 {% endblock %}

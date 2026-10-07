@@ -1,63 +1,78 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block body %}
-<div class="hx-shell" style="max-width: none !important; width: 100% !important; margin: 0; padding: 0;">
-    
-    {# Sprawdzamy sidebar - w home.md powinien być wyłączony w YAML #}
-    {% if page.header.sidebar != false %}
-        {% include 'partials/sidebar.html.twig' %}
-    {% endif %}
-    
-    {# KLUCZOWA ZMIANA: Dodajemy margin-left: 0 gdy nie ma sidebara, aby anulować pustą przestrzeń #}
-    <main class="hx-main" style="{% if page.header.sidebar == false %}margin-left: 0 !important;{% endif %} max-width: none !important; width: 100% !important; padding: 0 5%; flex: 1;">
-        
-        {% include "partials/hero.html.twig" %}
+    <div class="hx-shell" style="max-width: none !important; width: 100% !important; margin: 0; padding: 0;">
+        {# Sprawdzamy sidebar - w home.md powinien być wyłączony w YAML #}
+        {% if page.header.sidebar != false %}
+            {% include 'partials/sidebar.html.twig' %}
+        {% endif %}
+        {# KLUCZOWA ZMIANA: Dodajemy margin-left: 0 gdy nie ma sidebara, aby anulować pustą przestrzeń #}
+        <main class="hx-main" style="{% if page.header.sidebar == false %}margin-left: 0 !important;{% endif %} max-width: none !important; width: 100% !important; padding: 0 5%; flex: 1;">
+            {% include "partials/hero.html.twig" %}
 
-        <section class="hx-home-body mt-4" style="max-width: none !important; width: 100% !important;">
-            
-            <div class="doc-content">{{ page.content|raw }}</div>
+            <section class="hx-home-body mt-4" style="max-width: none !important; width: 100% !important;">
+                <div class="doc-content">{{ page.content|raw }}</div>
 
-            {# --- KAFELKI KURSÓW / MATERIAŁÓW --- #}
-            <h2 class="mt-5 mb-4 border-bottom pb-2">Materiały i Kursy</h2>
-            
-            <div class="row g-4 m-0" style="width: 100%;">
-                {% set materials = page.find('/classess') %}
-                {% if materials %}
-                    {% for course in materials.children.visible %}
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="{{ course.url }}" class="hx-card d-block h-100 position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover">
-                                <div class="hx-card-icon mb-3">{{ course.header.icon ?: '📚' }}</div>
-                                <h3 class="h5 mb-2 text-body">{{ course.title }}</h3>
-                                <p class="text-muted small mb-0">{{ course.summary|striptags|slice(0, 110) ~ '...' }}</p>
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+                {# --- KAFELKI KURSÓW / MATERIAŁÓW --- #}
+                <h2 class="mt-5 mb-4 border-bottom pb-2">Materiały i Kursy</h2>
+                <div class="row g-4 m-0" style="width: 100%;">
+                    {% set materials = page.find('/classess') %}
+                    {% if materials %}
+                        {% for course in materials.children.visible %}
+                            {% set cover = course.header.image ? course.media[course.header.image] : null %}
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <a href="{{ course.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
+
+                                    {% if cover %}
+                                        <div class="ratio ratio-16x9">
+                                            {{ cover.cropZoom(600, 338).attribute('loading', 'lazy').html(course.title, course.title, 'w-100 h-100 object-fit-cover')|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="p-4">
+                                        {% if not cover %}
+                                            <div class="hx-card-icon mb-3">{{ course.header.icon ?: '📚' }}</div>
+                                        {% endif %}
+                                        <h3 class="h5 mb-2 text-body">{{ course.title }}</h3>
+                                        <p class="text-muted small mb-0">{{ course.summary|striptags|slice(0, 110) ~ '...' }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {# --- KAFELKI BLOGA (6 WPISÓW) --- #}
+                <h2 class="mt-5 mb-4 border-bottom pb-2">Aktualności z bloga</h2>
+                <div class="row g-4 m-0 mb-5" style="width: 100%;">
+                    {% set blog = page.find('/news') %}
+                    {% if blog %}
+                        {% for post in blog.children.visible.order('date', 'desc').slice(0, 6) %}
+                            {% set cover = post.header.image ? post.media[post.header.image] : null %}
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <a href="{{ post.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
+
+                                    {% if cover %}
+                                        <div class="ratio ratio-16x9">
+                                            {{ cover.cropZoom(600, 338).attribute('loading', 'lazy').html(post.title, post.title, 'w-100 h-100 object-fit-cover')|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="p-4">
+                                        <span class="badge bg-secondary mb-3">{{ post.date|date("d.m.Y") }}</span>
+                                        <h3 class="h5 mb-2 text-body">{{ post.title }}</h3>
+                                        <p class="text-muted small mb-0">{{ post.summary|striptags|slice(0, 110) ~ '...' }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+
+            <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; margin-top: 50px;">
+                {% include 'partials/footer.html.twig' %}
             </div>
-
-            {# --- KAFELKI BLOGA (6 WPISÓW) --- #}
-            <h2 class="mt-5 mb-4 border-bottom pb-2">Aktualności z bloga</h2>
-            
-            <div class="row g-4 m-0 mb-5" style="width: 100%;">
-                {% set blog = page.find('/news') %}
-                {% if blog %}
-                    {% for post in blog.children.visible.order('date', 'desc').slice(0, 6) %}
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <a href="{{ post.url }}" class="hx-card d-block h-100 position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover">
-                                <span class="badge bg-secondary mb-3">{{ post.date|date("d.m.Y") }}</span>
-                                <h3 class="h5 mb-2 text-body">{{ post.title }}</h3>
-                                <p class="text-muted small mb-0">{{ post.summary|striptags|slice(0, 110) ~ '...' }}</p>
-                            </a>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </section>
-
-        <div style="width: 100%; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 20px; margin-top: 50px;">
-            {% include 'partials/footer.html.twig' %}
-        </div>
-        
-    </main>
-</div>
+        </main>
+    </div>
 {% endblock %}
