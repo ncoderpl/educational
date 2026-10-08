@@ -1,0 +1,33 @@
+<!-- Sekcja 2: Najpopularniejsze (wtyczka count-views) -->
+<h4 class="mb-3 border-bottom pb-2">Najpopularniejsze</h4>
+<ul class="list-unstyled">
+
+    {# KROK 1: Zbieramy wpisy z liczbą wyświetleń ze zmiennej viewcounts #}
+    {% set posts_with_views = {} %}
+    {% if news_folder %}
+        {% for post in news_folder.children.visible %}
+            {% set views = (viewcounts[post.route] ?? 0)|number_format(0, '', '') %}
+            {% set sort_key = "%08d"|format(views) ~ '-' ~ post.slug %}
+            {% set posts_with_views = posts_with_views|merge({ (sort_key): post }) %}
+        {% endfor %}
+    {% endif %}
+
+    {# KROK 2: Sortujemy klucze malejąco i bierzemy Top 5 #}
+    {% set top_keys = posts_with_views|keys|sort|reverse|slice(0, 5) %}
+
+    {# KROK 3: Wyświetlamy #}
+    {% for key in top_keys %}
+        {% set post = posts_with_views[key] %}
+        {% set views = viewcounts[post.route] ?? 0 %}
+        <li class="mb-3">
+            <a href="{{ post.url }}" class="text-decoration-none fw-bold d-block">{{ post.title }}</a>
+            <span class="small text-muted d-flex align-items-center gap-1 mt-1">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-75"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                {{ views }} wyświetleń
+            </span>
+        </li>
+    {% else %}
+        <li><span class="text-muted small">Brak wpisów.</span></li>
+    {% endfor %}
+
+</ul>

@@ -1,5 +1,7 @@
 ---
-title: EUTK
+title: EUP
+access:
+    site.eup: true
 ---
 
 > [!NOTE]

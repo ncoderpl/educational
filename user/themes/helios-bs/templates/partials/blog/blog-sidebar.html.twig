@@ -1,0 +1,10 @@
+<aside class="hx-blog-sidebar sticky-top" style="top: 0; padding: 20px; background: rgba(0,0,0,0.02); border-radius: 8px;">
+
+    {# Ustalamy główny folder z wpisami #}
+    {% set is_post = page.template == 'item' %}
+    {% set news_folder = is_post ? page.parent : page %}
+
+    {% include "partials/blog/blog-sidebar-post-data.html.twig" %}
+    {% include "partials/blog/blog-sidebar-categories.html.twig" %}
+    {% include "partials/blog/blog-sidebar-popular-posts.html.twig" %}
+</aside>

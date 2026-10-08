@@ -1,6 +1,108 @@
-{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
-<meta name="description" content="{{ (header.metadata.description ?: site.metadata.description)|e('html_attr') }}">
-<meta name="generator" content="GravCMS">
-<meta property="og:title" content="{{ (header.title ?: site.title)|e('html_attr') }}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ page.url(true, true) }}">
+{# ===== ZMIENNE ===== #}
+{% set lang = grav.language.getActive ?: grav.config.site.default_lang %}
+{% set locale_map = { 'pl': 'pl_PL', 'en': 'en_US', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES' } %}
+{% set og_locale = locale_map[lang] ?? (lang ~ '_' ~ lang|upper) %}
+
+{# Tytuł: seo_title > title; strona główna bez dopisku #}
+{% set page_title = page.header.seo_title ?: page.title %}
+{% set title = (page_title and not page.home) ? page_title ~ ' | ' ~ site.title : site.title %}
+
+{# Opis: metadata.description > początek treści > opis serwisu #}
+{% set description = (page.header.metadata.description
+    ?: (page.summary|striptags|replace({"\n": ' ', "\r": ' ', "\t": ' '})|trim|truncate(158))
+    ?: site.metadata.description)|trim %}
+
+{# Obraz: header.image > pierwszy obraz strony > domyślny #}
+{% set image = (page.header.image and page.media[page.header.image]) ? page.media[page.header.image] : (page.media.images|first) %}
+{% set image_url = image ? url(image.url, true) : url('theme://thumbnail.jpg', true) %}
+
+{% set canonical = page.header.canonical ?: page.url(true, true) %}
+{% set is_article = page.template in ['item', 'chapter', 'docs'] %}
+
+{# Robots: ręcznie > ukryte > domyślnie indeksuj #}
+{% if page.header.metadata.robots %}
+    {% set robots = page.header.metadata.robots %}
+{% elseif not page.routable or page.header.published == false %}
+    {% set robots = 'noindex, nofollow' %}
+{% else %}
+    {% set robots = 'index, follow, max-image-preview:large, max-snippet:-1' %}
+{% endif %}
+
+{# ===== PODSTAWY ===== #}
+<meta name="description" content="{{ description }}">
+<meta name="robots" content="{{ robots }}">
+<link rel="canonical" href="{{ canonical }}">
+
+{# ===== OPEN GRAPH ===== #}
+<meta property="og:type" content="{{ is_article ? 'article' : 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:locale" content="{{ og_locale }}">
+<meta property="og:image" content="{{ image_url }}">
+{% if image %}
+<meta property="og:image:width" content="{{ image.width }}">
+<meta property="og:image:height" content="{{ image.height }}">
+<meta property="og:image:alt" content="{{ page.header.image_alt ?: page_title }}">
+{% endif %}
+{% if is_article %}
+<meta property="article:published_time" content="{{ page.date|date('c') }}">
+<meta property="article:modified_time" content="{{ page.modified|date('c') }}">
+{% endif %}
+
+{# ===== TWITTER ===== #}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="{{ image_url }}">
+
+{# ===== POZOSTAŁE META Z FRONTMATTERA (np. keywords), bez duplikatów ===== #}
+{% for meta in page.metadata %}
+    {% if meta.name not in ['description', 'generator', 'robots']
+        and not (meta.property starts with 'og:')
+        and not (meta.property starts with 'article:')
+        and not (meta.name starts with 'twitter:') %}
+<meta {% if meta.name %}name="{{ meta.name }}" {% endif %}{% if meta.property %}property="{{ meta.property }}" {% endif %}content="{{ meta.content }}">
+    {% endif %}
+{% endfor %}
+
+{# ===== JSON-LD: okruszki ===== #}
+{% set crumbs = [] %}
+{% set cur = page %}
+{% for i in 1..8 %}
+    {% if cur and not cur.root %}
+        {% set crumbs = [cur]|merge(crumbs) %}
+        {% set cur = cur.parent %}
+    {% endif %}
+{% endfor %}
+{% set items = [{ '@type': 'ListItem', 'position': 1, 'name': site.title, 'item': base_url_absolute ~ '/' }] %}
+{% for c in crumbs %}
+    {% set items = items|merge([{ '@type': 'ListItem', 'position': loop.index + 1, 'name': (c.menu ?: c.title), 'item': c.url(true, true) }]) %}
+{% endfor %}
+<script type="application/ld+json">{{ { '@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': items }|json_encode|raw }}</script>
+
+{# ===== JSON-LD: artykuł / strona ===== #}
+{% if is_article %}
+<script type="application/ld+json">{{ {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    'headline': page_title|slice(0, 110),
+    'description': description,
+    'image': [image_url],
+    'datePublished': page.date|date('c'),
+    'dateModified': page.modified|date('c'),
+    'inLanguage': lang,
+    'mainEntityOfPage': canonical,
+    'author': { '@type': 'Person', 'name': page.header.author ?: site.author.name ?: site.title },
+    'publisher': { '@type': 'Organization', 'name': site.title }
+}|json_encode|raw }}</script>
+{% elseif page.home %}
+<script type="application/ld+json">{{ {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    'name': site.title,
+    'url': base_url_absolute ~ '/',
+    'inLanguage': lang
+}|json_encode|raw }}</script>
+{% endif %}

@@ -1,0 +1,21 @@
+{# --- TYTUŁ + OBRAZ WYRÓŻNIAJĄCY --- #}
+{% set cover = page.header.image ? page.media[page.header.image] : null %}
+
+{% if cover %}
+    <header class="position-relative mb-5 rounded overflow-hidden shadow-sm">
+        {{ cover.cropZoom(1200, 630).html(page.title, page.title, 'img-fluid w-100 d-block')|raw }}
+
+        {# Nakładka z tytułem na środku obrazka #}
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center p-3 p-md-5"
+             style="background: rgba(0, 0, 0, 0.45);">
+            <h1 class="display-4 fw-bold text-white mb-0" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                {{ page.title }}
+            </h1>
+        </div>
+    </header>
+{% else %}
+    {# Brak obrazka: zwykły tytuł jak dotąd #}
+    <header class="mb-5 border-bottom pb-4">
+        <h1 class="display-4 fw-bold mb-3">{{ page.title }}</h1>
+    </header>
+{% endif %}

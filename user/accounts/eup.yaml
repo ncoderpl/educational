@@ -4,17 +4,17 @@ fullname: 'EUP'
 title: ''
 access:
   site:
-  login: true
-  psp: false
-  sso: false
-  mysql: false
-  lsk: false
-  eup: true
-  mielsk-1k: false
-  mielsk-2k: false
-  mielsk-3k: false
-  isi: false
-  testy: false
+    login: true
+    psp: false
+    sso: false
+    mysql: false
+    lsk: false
+    eup: true
+    mielsk-1k: false
+    mielsk-2k: false
+    mielsk-3k: false
+    isi: false
+    testy: false
   admin:
     login: false
     super: false
