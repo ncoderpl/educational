@@ -6,7 +6,6 @@ image: hero-bg.webp
 taxonomy:
     category:
         - AI
-        - Networking
         - Programming
 ---
 

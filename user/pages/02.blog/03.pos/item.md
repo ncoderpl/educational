@@ -7,7 +7,6 @@ taxonomy:
     category:
         - AI
         - Networking
-        - Programming
 ---
 Nulla ullamco minim voluptate velit sunt voluptate reprehenderit ex. Sint nulla ullamco sunt laborum adipisicing. Nostrud dolore quis do quis consectetur ex. Sint ipsum consectetur ea eu amet sunt Lorem et nulla duis laborum ullamco veniam officia. Ex ad voluptate Lorem fugiat fugiat anim aliqua laborum velit nisi eiusmod dolore. Nisi anim officia aliquip eu nisi dolor laborum velit.
 
