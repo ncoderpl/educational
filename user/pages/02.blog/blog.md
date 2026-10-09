@@ -10,4 +10,4 @@ content:
         dir: desc
     pagination: true
 ---
-To jest strona ze wszystkimi wpisami na blogu.
+<!-- To jest strona ze wszystkimi wpisami na blogu. -->

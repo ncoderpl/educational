@@ -1656,3 +1656,23 @@ details[open]>.edu-summary .edu-chev {
 .hx-sidebar.edu-sidebar .edu-summary:hover {
     background: #363c48;
 }
+
+
+/* Domyślny wygląd dla komputerów (przywraca margines na spis treści) */
+
+@media (min-width: 992px) {
+    .hx-article-wrap {
+        padding-left: 2rem;
+        padding-right: calc(var(--hx-toc-w) + 3rem);
+    }
+}
+
+
+/* Na małych ekranach (poniżej 992px) wracamy do bezpiecznych marginesów z Twojego motywu */
+
+@media (max-width: 991px) {
+    .hx-article-wrap {
+        padding: 1.75rem 1.1rem 3rem !important;
+        /* Wartości, które widać w Twoich narzędziach DevTools */
+    }
+}

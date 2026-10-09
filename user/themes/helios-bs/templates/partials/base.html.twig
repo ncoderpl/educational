@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#15151A">
         <title>{% if (page.header.seo_title ?: page.title) and not page.home %}{{ page.header.seo_title ?: page.title }} | {% endif %}{{ site.title }}</title>
+
         {% include 'partials/metadata.html.twig' %}
 
         {# Motyw ustawiany przed renderem, żeby nie migało #}
@@ -72,7 +73,7 @@
             }
         </style>
 
-        {# Skrypty w <head> nie są podmieniane przez htmx, więc wykonują się raz #}
+        {# Główna mechanika SPA - Wykonuje się tylko raz #}
         <script>
             (function () {
                 if (window.__eduInit) return;
@@ -165,6 +166,14 @@
                         });
                     }
 
+                    // --- Bezpieczne resetowanie wyszukiwarki po nawigacji ---
+                    var searchInput = document.getElementById("hxSearch");
+                    if (searchInput) {
+                        searchInput.value = "";
+                        searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+                        searchInput.dispatchEvent(new KeyboardEvent("keydown", { bubbles: true, key: "Escape", keyCode: 27 }));
+                    }
+
                     // Zgodność z theme.js (TOC, czcionki) - tylko po nawigacji
                     document.dispatchEvent(
                         new Event("DOMContentLoaded", { bubbles: true, cancelable: true }),
@@ -188,11 +197,12 @@
                     <span class="hx-logo"></span><span class="d-none d-sm-inline">{{ site.title }}</span>
                 </a>
 
-                <div class="hx-search ms-lg-3 flex-grow-1">
-                    <input id="hxSearch" type="search" class="form-control form-control-sm" placeholder="Szukaj…" autocomplete="off" aria-label="Szukaj">
+                {# Kontener wyszukiwarki zachowany pomiędzy przeładowaniami dzięki hx-preserve #}
+                {# <div id="hx-search-wrapper" class="hx-search ms-lg-3 flex-grow-1" hx-preserve="true">
+                    <input id="hxSearch" type="search" class="form-control form-control-sm" placeholder="Szukaj…" autocomplete="off">
                     <span class="hx-kbd d-none d-md-inline"><kbd>Ctrl</kbd><kbd>K</kbd></span>
                     <div id="hxSearchResults" class="hx-search-results d-none"></div>
-                </div>
+                </div> #}
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-3">
                     {% for p in pages.children %}

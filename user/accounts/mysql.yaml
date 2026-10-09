@@ -4,17 +4,17 @@ fullname: 'MySQL'
 title: ''
 access:
   site:
-  login: true
-  psp: false
-  sso: false
-  mysql: true
-  lsk: false
-  eup: false
-  mielsk-1k: false
-  mielsk-2k: false
-  mielsk-3k: false
-  isi: false
-  testy: false
+    login: true
+    psp: false
+    sso: false
+    mysql: true
+    lsk: false
+    eup: false
+    mielsk-1k: false
+    mielsk-2k: false
+    mielsk-3k: false
+    isi: false
+    testy: false
   admin:
     login: false
     super: false

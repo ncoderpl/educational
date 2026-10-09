@@ -6,13 +6,11 @@
             {% set cover = course.header.image ? course.media[course.header.image] : null %}
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <a href="{{ course.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
-
                     {% if cover %}
                         <div class="ratio ratio-16x9">
                             {{ cover.cropZoom(600, 338).attribute('loading', 'lazy').html(course.title, course.title, 'w-100 h-100 object-fit-cover')|raw }}
                         </div>
                     {% endif %}
-
                     <div class="p-4">
                         {% if not cover %}
                             <div class="hx-card-icon mb-3">{{ course.header.icon ?: '📚' }}</div>

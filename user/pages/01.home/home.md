@@ -1,7 +1,7 @@
 ---
-title: Strona główna
+title: 'Edu IT Lessons'
 sidebar: false
 body_classes: home
 ---
 
-Tutaj tekst wstępny do strony głównej (jeśli jakiś chcesz pod Hero).
+<!-- Tutaj tekst wstępny do strony głównej (jeśli jakiś chcesz pod Hero). -->
