@@ -16,9 +16,11 @@
                     <span class="edu-courses-title">Wybierz kurs</span>
                     <div class="edu-courses-grid">
                         {% for course in section.children.visible %}
-                            <a href="{{ course.url }}"
-                               hx-boost="false"
-                               class="edu-course-btn {{ course.active or course.activeChild ? 'active' : '' }}">{{ course.menu }}</a>
+                            <a
+                                href="{{ course.url }}"
+                                hx-boost="false"
+                                class="edu-course-btn {{ course.active or course.activeChild ? 'active' : '' }}"
+                            >{{ course.menu }}</a>
                         {% endfor %}
                     </div>
                 </div>
@@ -27,8 +29,7 @@
                 <div class="edu-brand">{{ active_course ? active_course.menu : section.menu }}</div>
 
                 <nav class="edu-nav" id="hxNav">
-                    <a class="edu-back" href="{{ base_url == '' ? '/' : base_url }}">&larr; Wróć do strony głównej</a>
-
+                    <a class="edu-back" href="{{ base_url == '' ? '/courses' : base_url ~ '/courses' }}">&larr; Wróć do listy kursów</a>
                     {# --- Lekcje tylko aktywnego kursu --- #}
                     {% if active_course %}
                         <ul class="edu-list">
