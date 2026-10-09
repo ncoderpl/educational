@@ -1,19 +1,13 @@
 {% extends 'partials/base.html.twig' %}
-
 {% block body %}
     <div class="hx-shell">
         {% include 'partials/sidebar.html.twig' %}
-
         <main class="hx-main docs" id="docs">
-
             {# 1. Kontener na 100% szerokości. KLUCZOWE: padding-right rezerwuje bezpieczne miejsce na fixed sidebar uzywajac wbudowanej zmiennej z CSS #}
             <div class="hx-article-wrap">
-
                 {# 2. Treść artykułu zajmuje maksa (flex: 1) z uwzględnieniem powyższego marginesu #}
                 <article class="hx-article" style="max-width: 100%; flex: 1; min-width: 0;">
-
                     {% include "partials/hero.html.twig" %}
-
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-3">
                         <nav class="hx-breadcrumbs mb-0" aria-label="breadcrumb">
                             <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
@@ -24,16 +18,12 @@
                             {% endfor %}
                             <span>/</span><span class="current">{{ page.menu }}</span>
                         </nav>
-
                         {% include "partials/readtime.html.twig" %}
                     </div>
-
                     {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
-
                     <div class="doc-content" id="docContent">
                         {{ page.content|raw }}
                     </div>
-
                     {% if page.children.visible.count %}
                         <div class="row g-3 mt-3 hx-child-cards">
                             {% for child in page.children.visible %}
@@ -46,20 +36,15 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-
                     {% include "partials/docs-footer.html.twig" %}
-
                     <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
                         <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>
                         {% if config.theme.github_edit_url %}
                             <a href="{{ config.theme.github_edit_url|trim('/', 'right') }}{{ page.relativePagePath }}" target="_blank" rel="noopener">Edytuj tę stronę na GitHubie ↗</a>
                         {% endif %}
                     </div>
-
                     {% include 'partials/footer.html.twig' %}
-
                 </article>
-
                 {# 3. Prawy sidebar przypięty (FIXED) na stałe do prawej krawędzi ekranu #}
                 <aside class="hx-toc d-none d-xl-block" style="position: fixed !important; right: 2rem !important; ) !important; width: var(--hx-toc-w) !important; z-index: 100;">
                     <div class="hx-toc-inner" style="max-height: calc(100vh - 80px);">
@@ -67,7 +52,6 @@
                         <ul class="list-unstyled mb-0" id="hxToc"></ul>
                     </div>
                 </aside>
-
             </div>
         </main>
     </div>
