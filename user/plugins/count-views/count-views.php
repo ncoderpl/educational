@@ -14,13 +14,6 @@ class CountViewsPlugin extends Plugin
 {
     /**
      * @return array
-     *
-     * The getSubscribedEvents() gives the core a list of events
-     *     that the plugin wants to listen to. The key of each
-     *     array section is the event that the plugin listens to
-     *     and the value (in the form of an array) contains the
-     *     callable (or function) as well as the priority. The
-     *     higher the number the higher the priority.
      */
     public static function getSubscribedEvents()
     {
@@ -39,7 +32,7 @@ class CountViewsPlugin extends Plugin
             return;
         }
 
-        // Enable the main event we are interested in
+        // Enable the main events we are interested in
         $this->enable([
             'onPagesInitialized' => ['onPagesInitialized', 0],
             'onPageInitialized' => ['onPageInitialized', 0]
@@ -49,31 +42,27 @@ class CountViewsPlugin extends Plugin
     // This loads the existing data into Twig
     public function onPagesInitialized(Event $e)
     {
-        // Get count data file
-        $config = $this->grav['config'];
         $locator = $this->grav['locator'];
         $path = $locator->findResource('user://data', true);
         $path .= DS.static::sanitize($this->grav['config']->get('plugins.count-views.datafile'));
 
-        // Get page route
-        $page = $this->grav['page'];
-        $route = $page->route();
-        if (empty($route)) $route = $this->config->get('plugins.error.routes.404', '/error');
-
-        // Open data file
-        $datafh = File::instance($path);
-        $data = Yaml::parse($datafh->content());
-        $datafh->free();
+        $data = [];
+        try {
+            $datafh = File::instance($path);
+            $data = Yaml::parse($datafh->content());
+            $datafh->free();
+        } catch (\Throwable $ex) {
+            // Chwilowy problem z plikiem: wyświetl stronę bez liczników
+            $data = [];
+        }
 
         // Load count data into a twig variable
-        $this->grav['twig']->twig_vars['viewcounts'] = $data;
+        $this->grav['twig']->twig_vars['viewcounts'] = is_array($data) ? $data : [];
     }
 
     // This increments the counter
     public function onPageInitialized(Event $e)
     {
-        // Get count data file
-        $config = $this->grav['config'];
         $locator = $this->grav['locator'];
         $path = $locator->findResource('user://data', true);
         $path .= DS.static::sanitize($this->grav['config']->get('plugins.count-views.datafile'));
@@ -81,29 +70,33 @@ class CountViewsPlugin extends Plugin
         // Get page route
         $page = $this->grav['page'];
         $route = $page->route();
-        if (empty($route)) $route = $this->config->get('plugins.error.routes.404', '/error');
-
-        // Open data file
-        $datafh = File::instance($path);
-        $datafh->lock();
-        $data = Yaml::parse($datafh->content());
-        if ($data === null) {
-            $data = array();
+        if (empty($route)) {
+            $route = $this->config->get('plugins.error.routes.404', '/error');
         }
 
-        // Record count
-        if (array_key_exists($route, $data)) {
-            $data[$route]++;
-        } else {
-            $data[$route] = 1;
-        }
+        try {
+            $datafh = File::instance($path);
 
-        // Save 
-        $datafh->save(YAML::dump($data));
-        $datafh->free();
+            // Najpierw odczyt, bez lock() (na Windowsie lock blokuje odczyt)
+            $data = Yaml::parse($datafh->content());
+            if (!is_array($data)) {
+                $data = [];
+            }
+
+            // Record count
+            $data[$route] = ($data[$route] ?? 0) + 1;
+
+            // save() samo zakłada blokadę na czas zapisu
+            $datafh->save(Yaml::dump($data));
+            $datafh->free();
+        } catch (\Throwable $ex) {
+            // Chwilowa blokada pliku: pomiń jedno zliczenie zamiast zwracać błąd 500
+            return;
+        }
     }
 
-    private static function sanitize($fn) {
+    private static function sanitize($fn)
+    {
         $fn = trim($fn);
         $fn = str_replace('..', '', $fn);
         $fn = ltrim($fn, DS);
