@@ -1266,10 +1266,18 @@ class MediaController extends AbstractApiController
         $absolute = $basePath . '/' . $path;
 
         // For existing paths, use realpath
-        if (file_exists($absolute)) {
+               if (file_exists($absolute)) {
             $real = realpath($absolute);
             $realBase = realpath($basePath);
-            if ($real === false || $realBase === false || !str_starts_with($real, $realBase . '/')) {
+            if ($real === false || $realBase === false) {
+                throw new ValidationException("Invalid path: '{$path}'.");
+            }
+
+            // Windows zwraca "\" z realpath(), więc normalizujemy do "/"
+            $real = str_replace('\\', '/', $real);
+            $realBase = rtrim(str_replace('\\', '/', $realBase), '/');
+
+            if (!str_starts_with($real, $realBase . '/')) {
                 throw new ValidationException("Invalid path: '{$path}'.");
             }
         }
@@ -1282,7 +1290,7 @@ class MediaController extends AbstractApiController
      * Unlike getSafeFilename() which strips directories with basename(),
      * this preserves path components for subfolder support.
      */
-    private function getSafeRelativeFilePath(ServerRequestInterface $request, string $basePath): string
+        private function getSafeRelativeFilePath(ServerRequestInterface $request, string $basePath): string
     {
         $filename = $this->getRouteParam($request, 'filename');
 
@@ -1312,14 +1320,21 @@ class MediaController extends AbstractApiController
         if (file_exists($absolute)) {
             $real = realpath($absolute);
             $realBase = realpath($basePath);
-            if ($real === false || $realBase === false || !str_starts_with($real, $realBase . '/')) {
+            if ($real === false || $realBase === false) {
+                throw new ValidationException('Invalid filename.');
+            }
+
+            // Windows zwraca "\" z realpath(), więc normalizujemy do "/"
+            $real = str_replace('\\', '/', $real);
+            $realBase = rtrim(str_replace('\\', '/', $realBase), '/');
+
+            if (!str_starts_with($real, $realBase . '/')) {
                 throw new ValidationException('Invalid filename.');
             }
         }
 
         return $filename;
     }
-
     // -------------------------------------------------------------------------
     // Media metadata (.meta.yaml) helpers
     // -------------------------------------------------------------------------
