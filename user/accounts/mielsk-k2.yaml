@@ -1,0 +1,27 @@
+state: enabled
+email: mielsk@mielsk.mielsk
+fullname: Mielsk K2
+title: ''
+access:
+  site:
+    login: true
+    psp: false
+    sso: false
+    mysql: false
+    lsk: false
+    eup: false
+    mielsk-k1: false
+    mielsk-k2: true
+    mielsk-k3: false
+    isi: false
+    testy: false
+  admin:
+    login: false
+    super: false
+created: 1791211032
+modified: 1791211484
+language: ''
+content_editor: ''
+groups: {  }
+api_tokens_valid_after: 1791211484
+hashed_password: $2y$12$oaIV/IyyWQ15kwFn.0wjouAH1eGcw1RLyf/37E0Nsb6LixPP0MH1i
