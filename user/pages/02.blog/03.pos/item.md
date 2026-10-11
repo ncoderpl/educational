@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: 'Mój pierwszy wpis'
 date: '2026-10-06 12:00'
 sidebar: false
