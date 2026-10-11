@@ -21,6 +21,10 @@ admin_next:
   preferences:
     pagesViewMode: miller
     editorMode: expert
-    accentHue: 25
-    accentSaturation: 95
+    accentHue: 240
+    accentSaturation: 6
     adminLanguage: pl-PL
+    colorMode: light
+    fontFamily: inter
+    fontSize: normal
+    helpMode: tooltip
