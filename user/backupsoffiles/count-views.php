@@ -1,4 +1,7 @@
 <?php
+
+// user/plugins/count-views/count-views.php
+
 namespace Grav\Plugin;
 
 use Grav\Common\Plugin;
