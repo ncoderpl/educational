@@ -1,7 +1,7 @@
 ---
 title: 'Rozkłady materiału'
 published: true
-acceess:
+access:
     site.testy: true
 ---
 
