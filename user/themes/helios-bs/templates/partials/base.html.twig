@@ -32,153 +32,25 @@
         <link href="{{ url('theme://css/theme.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
 
-        <script defer src="https://unpkg.com/htmx.org@1.9.12"></script>
-
-        <style>
-            .htmx-indicator {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 3px;
-                background: transparent;
-                z-index: 9999;
-                opacity: 0;
-                transition: opacity 0.2s ease-in;
-                pointer-events: none;
-            }
-            .htmx-request.htmx-indicator {
-                opacity: 1;
-            }
-            .htmx-request.htmx-indicator::before {
-                content: "";
-                display: block;
-                height: 100%;
-                background: linear-gradient(90deg, #8b7cff, #b1a8ff);
-                animation: htmx-loading 1.2s infinite ease-in-out;
-            }
-            @keyframes htmx-loading {
-                0% {
-                    width: 0;
-                    margin-left: 0;
-                }
-                50% {
-                    width: 50%;
-                    margin-left: 25%;
-                }
-                100% {
-                    width: 0;
-                    margin-left: 100%;
-                }
-            }
-        </style>
-
-        {# Główna mechanika SPA - Wykonuje się tylko raz #}
+        {# Inicjalizacja KaTeX przy standardowym ładowaniu strony #}
         <script>
-            (function () {
-                if (window.__eduInit) return;
-                window.__eduInit = true;
-
-                // --- Linki do plików: bez htmx, z pobieraniem ---
-                function markFileLinks(root) {
-                    if (!root || !root.querySelectorAll) return;
-                    root.querySelectorAll(
-                        'a[href$=".pptx"], a[href$=".pdf"], a[href$=".docx"], a[href$=".xlsx"], a[href$=".zip"]',
-                    ).forEach(function (a) {
-                        a.setAttribute("hx-boost", "false");
-                        a.setAttribute("download", "");
+            document.addEventListener("DOMContentLoaded", function () {
+                if (typeof katex !== "undefined") {
+                    document.querySelectorAll("[data-m]").forEach(function (el) {
+                        var m = el.getAttribute("data-m");
+                        if (m) {
+                            katex.render(m, el, {
+                                displayMode: true,
+                                throwOnError: false,
+                            });
+                        }
                     });
                 }
-
-                document.addEventListener("DOMContentLoaded", function () {
-                    if (window.htmx) htmx.onLoad(markFileLinks);
-                });
-
-                // --- Stan paska bocznego przed podmianą strony ---
-                document.addEventListener("htmx:beforeSwap", function (event) {
-                    if (!event.detail.boosted) return;
-                    var sidebarBody = document.querySelector("#hxSidebar .offcanvas-body");
-                    if (!sidebarBody) return;
-
-                    try {
-                        sessionStorage.setItem("hxSidebarScroll", sidebarBody.scrollTop);
-
-                        var openFolders = [];
-                        document
-                            .querySelectorAll("#hxSidebar details[open] > summary")
-                            .forEach(function (s) {
-                                openFolders.push(s.textContent.trim());
-                            });
-                        sessionStorage.setItem(
-                            "hxSidebarOpen",
-                            JSON.stringify(openFolders),
-                        );
-                    } catch (e) {}
-                });
-
-                // --- Po podmianie strony ---
-                document.addEventListener("htmx:afterSwap", function (event) {
-                    if (!event.detail.boosted) return;
-
-                    // Przywróć rozwinięte foldery
-                    var openFolders = [];
-                    try {
-                        openFolders = JSON.parse(
-                            sessionStorage.getItem("hxSidebarOpen") || "[]",
-                        );
-                    } catch (e) {}
-                    document
-                        .querySelectorAll("#hxSidebar details")
-                        .forEach(function (detail) {
-                            var summary = detail.querySelector("summary");
-                            if (
-                                summary &&
-                                openFolders.indexOf(summary.textContent.trim()) !== -1
-                            ) {
-                                detail.setAttribute("open", "");
-                            }
-                        });
-
-                    // Przywróć scroll paska
-                    var sidebarBody = document.querySelector("#hxSidebar .offcanvas-body");
-                    var savedScroll = null;
-                    try {
-                        savedScroll = sessionStorage.getItem("hxSidebarScroll");
-                    } catch (e) {}
-                    if (sidebarBody && savedScroll) {
-                        setTimeout(function () {
-                            sidebarBody.scrollTop = parseInt(savedScroll, 10);
-                        }, 10);
-                    }
-
-                    // Treść na górę
-                    window.scrollTo({ top: 0, behavior: "instant" });
-
-                    // KaTeX
-                    if (typeof katex !== "undefined") {
-                        document.querySelectorAll("[data-m]").forEach(function (el) {
-                            var m = el.getAttribute("data-m");
-                            if (m)
-                                katex.render(m, el, {
-                                    displayMode: true,
-                                    throwOnError: false,
-                                });
-                        });
-                    }
-
-                    // Zgodność z theme.js (TOC, czcionki) - tylko po nawigacji
-                    document.dispatchEvent(
-                        new Event("DOMContentLoaded", { bubbles: true, cancelable: true }),
-                    );
-                    window.dispatchEvent(new Event("load"));
-                });
-            })();
+            });
         </script>
     </head>
 
-    <body hx-boost="true" hx-indicator="#hx-loader">
-
-        <div id="hx-loader" class="htmx-indicator"></div>
+    <body>
 
         <header class="hx-topbar sticky-top">
             <div class="hx-topbar-inner d-flex align-items-center gap-2 gap-lg-3 px-3 px-lg-4">
@@ -191,11 +63,7 @@
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-3">
                     {% for p in pages.children %}
-                        <!-- Standardowy link - hx-boost z tagu body automatycznie zrobi z tego AJAX -->
-                        <a
-                            class="hx-toplink {{ (p.active or p.activeChild) ? 'active' : '' }}"
-                            href="{{ p.url }}"
-                        >
+                        <a class="hx-toplink {{ (p.active or p.activeChild) ? 'active' : '' }}" href="{{ p.url }}">
                             {{ p.menu|default(p.title) }}
                         </a>
                     {% endfor %}
@@ -203,17 +71,7 @@
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-auto">
                     {% for link in config.theme.header_links %}
-                        <a
-                            class="hx-toplink"
-                            href="{{ link.url }}"
-                            {% if link.url starts with 'http' %}
-                            target="_blank"
-                            rel="noopener"
-                            hx-boost="false"
-                            {% endif %}
-                        >
-                            {{ link.title }}
-                        </a>
+                        <a class="hx-toplink" href="{{ link.url }}"{% if link.url starts with 'http' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a>
                     {% endfor %}
                 </nav>
 
@@ -221,7 +79,7 @@
 
                     {# Przycisk wylogowania - widoczny tylko dla zalogowanych użytkowników #}
                     {% if grav.user.authenticated %}
-                        <a href="{{ uri.addNonce(base_url_relative ~ '/task:login.logout', 'logout-form', 'logout-nonce') }}" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-1" title="Zalogowany jako: {{ grav.user.username }}" hx-boost="false">
+                        <a href="{{ uri.addNonce(base_url_relative ~ '/task:login.logout', 'logout-form', 'logout-nonce') }}" class="btn btn-sm btn-outline-danger d-flex align-items-center gap-1" title="Zalogowany jako: {{ grav.user.username }}">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                 <polyline points="16 17 21 12 16 7"></polyline>
