@@ -191,12 +191,11 @@
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-3">
                     {% for p in pages.children %}
-                        <a class="hx-toplink {{ (p.active or p.activeChild) ? 'active' : '' }}"
-                           href="{{ p.url }}"
-                           hx-get="{{ p.url }}"
-                           hx-target="#content"
-                           hx-select="#content"
-                           hx-push-url="true">
+                        <!-- Standardowy link - hx-boost z tagu body automatycznie zrobi z tego AJAX -->
+                        <a
+                            class="hx-toplink {{ (p.active or p.activeChild) ? 'active' : '' }}"
+                            href="{{ p.url }}"
+                        >
                             {{ p.menu|default(p.title) }}
                         </a>
                     {% endfor %}
@@ -204,16 +203,15 @@
 
                 <nav class="d-none d-md-flex align-items-center gap-3 ms-auto">
                     {% for link in config.theme.header_links %}
-                        <a class="hx-toplink"
-                           href="{{ link.url }}"
-                           {% if link.url starts with 'http' %}
-                               target="_blank" rel="noopener" hx-boost="false"
-                           {% else %}
-                               hx-get="{{ link.url }}"
-                               hx-target="#content"
-                               hx-select="#content"
-                               hx-push-url="true"
-                           {% endif %}>
+                        <a
+                            class="hx-toplink"
+                            href="{{ link.url }}"
+                            {% if link.url starts with 'http' %}
+                            target="_blank"
+                            rel="noopener"
+                            hx-boost="false"
+                            {% endif %}
+                        >
                             {{ link.title }}
                         </a>
                     {% endfor %}
