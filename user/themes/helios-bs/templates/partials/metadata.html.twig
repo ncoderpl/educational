@@ -22,7 +22,7 @@
 {# Robots: ręcznie > ukryte > domyślnie indeksuj #}
 {% if page.header.metadata.robots %}
     {% set robots = page.header.metadata.robots %}
-{% elseif not page.routable or page.header.published == false %}
+{% elseif not page.routable or not page.published %}
     {% set robots = 'noindex, nofollow' %}
 {% else %}
     {% set robots = 'index, follow, max-image-preview:large, max-snippet:-1' %}
