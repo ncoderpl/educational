@@ -5,6 +5,8 @@ content:
     items:
         - '@self.children'
     # limit: 12
+    filter:
+        published: true
     order:
         by: date
         dir: desc

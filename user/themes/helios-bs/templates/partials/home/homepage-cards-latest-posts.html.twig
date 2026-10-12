@@ -2,7 +2,7 @@
 <div class="row g-4 m-0 mb-5" style="width: 100%;">
     {% set blog = page.find('/blog') %}
     {% if blog %}
-        {% for post in blog.children.visible.order('date', 'desc').slice(0, 6) %}
+        {% for post in blog.children.visible.published.order('date', 'desc').slice(0, 6) %}
             {% set cover = post.header.image ? post.media[post.header.image] : null %}
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <a href="{{ post.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
