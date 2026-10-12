@@ -1,9 +1,9 @@
 {% extends 'partials/base.html.twig' %}
 {% block body %}
     <div class="hx-shell" style="max-width: none !important; width: 100% !important; margin: 0; padding: 0;">
-        {% if page.header.sidebar != false %}
+        <div class="{% if page.header.sidebar == false %}d-lg-none{% endif %}">
             {% include 'partials/sidebar.html.twig' %}
-        {% endif %}
+        </div>
         <main class="hx-main" style="{% if page.header.sidebar == false %}margin-left: 0 !important;{% endif %} max-width: none !important; width: 100% !important; padding: 0 5%; flex: 1;">
             <div class="row mt-5" style="width: 100%; margin: 0;">
                 {# --- LEWA KOLUMNA: TREŚĆ ARTYKUŁU --- #}

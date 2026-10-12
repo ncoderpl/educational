@@ -5,6 +5,38 @@
     </div>
 
     <div class="offcanvas-body flex-column p-0">
+        
+        {# --- MENU MOBILNE (Widoczne tylko na Home, Blogu i wpisach na blogu) --- #}
+        {% if page.slug == 'home' or page.slug == 'blog' or page.parent.slug == 'blog' or page.topParent.slug == 'blog' %}
+            <div class="d-lg-none w-100 p-3 border-bottom mb-3">
+                
+                {# Opcjonalny mały nagłówek, żeby pasowało do stylu "Wybierz kurs" z niższych sekcji #}
+                <span class="edu-courses-title d-block mb-2">Nawigacja</span>
+                
+                <ul class="edu-list mb-0">
+                    {% for p in pages.children.visible %}
+                        <li>
+                            <a class="edu-link {{ (p.active or p.activeChild) ? 'active' : '' }}" href="{{ p.url }}">
+                                {{ p.menu|default(p.title) }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    
+                    {% for link in config.theme.header_links %}
+                        <li>
+                            <a class="edu-link" href="{{ link.url }}" 
+                               {% if link.url starts with 'http' %}target="_blank" rel="noopener" hx-boost="false"{% endif %}>
+                                {{ link.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>
+        {% endif %}
+        {# --- KONIEC MENU MOBILNEGO --- #}
+
+        {# --- ORYGINALNY KOD KURSÓW --- #}
         {% for section in pages.children.visible %}
             {% if section.slug != 'home' and section.slug != 'blog' and (section.active or section.activeChild) %}
 
