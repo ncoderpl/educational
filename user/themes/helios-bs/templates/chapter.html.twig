@@ -25,9 +25,9 @@
                 </div>
 
                {% if page.children.visible.count %}
-                    <div class="row g-3 mt-3 hx-child-cards">
+                    <div class="row g-3 mt-3 hx-child-cards chapter-card">
                         {% for child in page.children.visible %}
-                            <div class="col-sm-12">
+                            <div class="col-sm-12  col-lg-4 card-{{ loop.index is odd ? 'odd' : 'even' }}">
                                 <a href="{{ child.url }}" class="hx-card d-block h-100">
                                     {# ZMIANA: Dodano loop.index obok tytułu #}
                                     <h3 class="mt-0">

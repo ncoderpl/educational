@@ -76,7 +76,7 @@
                 {% if collection|length > 0 %}
                     {% for course in collection %}
                         {# Używamy col-12, aby rozciągnąć kafelek na całą szerokość ekranu #}
-                        <div class="col-12">
+                        <div class="col-4 card-{{ loop.index is odd ? 'odd' : 'even' }}">
                             {# d-flex i align-items-center dla estetycznego ułożenia ikony i tekstu w rzędzie #}
                             <a href="{{ course.url }}" class="hx-card d-flex flex-column flex-md-row align-items-md-center position-relative p-4 border rounded shadow-sm text-decoration-none transition-hover h-100">
 
@@ -86,7 +86,7 @@
 
                                 <div class="flex-grow-1">
                                     <h3 class="h4 mb-2 text-body fw-bold">{{ course.title }}</h3>
-                                    <p class="text-muted mb-0">{{ course.summary|striptags|slice(0, 250) ~ '->' }}</p>
+                                    {# <p class="text-muted mb-0">{{ course.summary|striptags|slice(0, 250) ~ '->' }}</p> #}
                                 </div>
 
                                 <div class="ms-md-4 mt-3 mt-md-0 text-muted opacity-50 d-none d-md-block">
