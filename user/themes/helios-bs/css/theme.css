@@ -981,7 +981,19 @@ details[open]>summary>.hx-chev {
     font-size: 1.1rem;
 }
 
+.card-odd {
+a {
+        background: lightgrey;
+        
+    }
+}
 
+.card-even {
+    a {
+        background: grey;
+        
+    }
+}
 /* ==========================================================================
    10. STRONICOWANIE I STOPKA
    ========================================================================== */

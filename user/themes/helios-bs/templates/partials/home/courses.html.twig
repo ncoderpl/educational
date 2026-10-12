@@ -4,7 +4,7 @@
     {% if materials %}
         {% for course in materials.children.visible %}
             {% set cover = course.header.image ? course.media[course.header.image] : null %}
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-sm-6 col-md-4 col-lg-4 card-{{ loop.index is odd ? 'odd' : 'even' }}">
                 <a href="{{ course.url }}" class="hx-card d-flex flex-column h-100 position-relative p-0 overflow-hidden border rounded shadow-sm text-decoration-none transition-hover">
                     {% if cover %}
                         <div class="ratio ratio-16x9">
@@ -16,7 +16,7 @@
                             <div class="hx-card-icon mb-3">{{ course.header.icon ?: '📚' }}</div>
                         {% endif %}
                         <h3 class="h5 mb-2 text-body">{{ course.title }}</h3>
-                        <p class="text-muted small mb-0">{{ course.summary|striptags|slice(0, 110) ~ '...' }}</p>
+                        {# <p class="text-muted small mb-0">{{ course.summary|striptags|slice(0, 110) ~ '...' }}</p> #}
                     </div>
                 </a>
             </div>
