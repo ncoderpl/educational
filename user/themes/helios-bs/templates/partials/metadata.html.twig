@@ -1,4 +1,6 @@
 {# ===== ZMIENNE ===== #}
+{# Adres bazowy bez portu: z site.yaml (canonical_base: 'https://domena.pl'), a gdy brak - z adresu Gravu z obciętym portem #}
+{% set site_base = (config.site.canonical_base ?: base_url_absolute|regex_replace('#^(https?://[^/:]+):\\d+#', '$1'))|trim('/', 'right') %}
 {% set lang = grav.language.getActive ?: grav.config.site.default_lang %}
 {% set locale_map = { 'pl': 'pl_PL', 'en': 'en_US', 'de': 'de_DE', 'fr': 'fr_FR', 'es': 'es_ES' } %}
 {% set og_locale = locale_map[lang] ?? (lang ~ '_' ~ lang|upper) %}
@@ -14,15 +16,15 @@
 
 {# Obraz: header.image > pierwszy obraz strony > domyślny #}
 {% set image = (page.header.image and page.media[page.header.image]) ? page.media[page.header.image] : (page.media.images|first) %}
-{% set image_url = image ? url(image.url, true) : url('theme://thumbnail.jpg', true) %}
+{% set image_url = site_base ~ (image ? image.url : url('theme://thumbnail.jpg')) %}
 
-{% set canonical = page.header.canonical ?: page.url(true, true) %}
+{% set canonical = page.header.canonical ?: (site_base ~ page.url) %}
 {% set is_article = page.template in ['item', 'chapter', 'docs'] %}
 
 {# Robots: ręcznie > ukryte > domyślnie indeksuj #}
 {% if page.header.metadata.robots %}
     {% set robots = page.header.metadata.robots %}
-{% elseif not page.routable or not page.published %}
+{% elseif not page.routable or not page.published or page.template == 'login' %}
     {% set robots = 'noindex, nofollow' %}
 {% else %}
     {% set robots = 'index, follow, max-image-preview:large, max-snippet:-1' %}
@@ -76,9 +78,9 @@
         {% set cur = cur.parent %}
     {% endif %}
 {% endfor %}
-{% set items = [{ '@type': 'ListItem', 'position': 1, 'name': site.title, 'item': base_url_absolute ~ '/' }] %}
+{% set items = [{ '@type': 'ListItem', 'position': 1, 'name': site.title, 'item': site_base ~ '/' }] %}
 {% for c in crumbs %}
-    {% set items = items|merge([{ '@type': 'ListItem', 'position': loop.index + 1, 'name': (c.menu ?: c.title), 'item': c.url(true, true) }]) %}
+    {% set items = items|merge([{ '@type': 'ListItem', 'position': loop.index + 1, 'name': (c.menu ?: c.title), 'item': site_base ~ c.url }]) %}
 {% endfor %}
 <script type="application/ld+json">{{ { '@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': items }|json_encode|raw }}</script>
 
@@ -102,7 +104,7 @@
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     'name': site.title,
-    'url': base_url_absolute ~ '/',
+    'url': site_base ~ '/',
     'inLanguage': lang
 }|json_encode|raw }}</script>
 {% endif %}
