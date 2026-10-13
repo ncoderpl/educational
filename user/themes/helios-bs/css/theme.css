@@ -981,27 +981,24 @@ details[open]>summary>.hx-chev {
     font-size: 1.1rem;
 }
 
-.card-odd {
-a {
-        background: lightgrey;
-        
+.card-odd a {
+    background: lightgrey;
+}
+
+.card-even a {
+    background: grey;
+}
+
+.chapter-card {
+    .card-odd p {
+        color: #000;
+    }
+    p {
+        color: #fff;
     }
 }
 
-.card-even {
-    a {
-        background: grey;
-        
-    }
-}
-.chapter-card {
-    .card-odd  p {
-        color: #000;
-    }
-    p{
-        color:#fff;
-    }
-}
+
 /* ==========================================================================
    10. STRONICOWANIE I STOPKA
    ========================================================================== */
@@ -1097,7 +1094,7 @@ a {
 }
 
 [data-bs-theme="dark"] .hx-login-card,
- :root:not([data-bs-theme="light"]) .hx-login-card {
+:root:not([data-bs-theme="light"]) .hx-login-card {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
