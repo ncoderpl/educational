@@ -54,9 +54,7 @@ body {
 }
 
 body {
-    /* background: var(--hx-bg);
-     */
-    background: red !important;
+    background: var(--hx-bg);
     color: var(--hx-text);
     font-family: 'Inter', system-ui, sans-serif;
     font-size: 15.5px;
