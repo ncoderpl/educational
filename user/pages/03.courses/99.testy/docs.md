@@ -22,9 +22,23 @@ access:
 
 ## SSO
 
+## EUP
+[Kartkowka_Urzadzenia_Peryferyjne_grupy_AB-Hard.docx](media://testy/eup/Kartkowka_Urzadzenia_Peryferyjne_grupy_AB-Hard.docx)
 
+[Kartkowka_jednokrotny_4_grupy-jednokrotny.docx](media://testy/eup/Kartkowka_jednokrotny_4_grupy-jednokrotny.docx)
 
-# Skala ocen ze sprawdzianów – ZSE im. A. i J. Vetterów w Lublinie
+### Skala ocen z kartkówek – ZSE im. A. i J. Vetterów w Lublinie
+
+| Ocena | Próg procentowy (statut) | Punkty (z 20) |
+| --- | --- | --- |
+| celujący (6) | 96–100% | 20 |
+| bardzo dobry (5) | 91–95% | 19 |
+| dobry (4) | 71–90% | 15–18 |
+| dostateczny (3) | 51–70% | 11–14 |
+| dopuszczający (2) | 30–50% | 6–10 |
+| niedostateczny (1) | 0–29% | 0–5 |
+
+### Skala ocen ze sprawdzianów – ZSE im. A. i J. Vetterów w Lublinie
 
 | Ocena | Próg procentowy (statut) | Punkty (z 40) |
 | --- | --- | --- |
@@ -35,7 +49,7 @@ access:
 | dopuszczający (2) | 30–50% | 12–20 |
 | niedostateczny (1) | 0–29% | 0–11 |
 
-# Skala ocen – sprawdzian 60 pytań (ZSE im. A. i J. Vetterów w Lublinie)
+### Skala ocen – sprawdzian 60 pytań (ZSE im. A. i J. Vetterów w Lublinie)
 
 | Ocena | Próg procentowy (statut) | Punkty (z 60) |
 | --- | --- | --- |
