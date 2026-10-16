@@ -1,6 +1,6 @@
 state: enabled
 email: psp@psp.psp
-fullname: 'PSP'
+fullname: PSP
 title: ''
 access:
   site:
@@ -24,6 +24,4 @@ language: ''
 content_editor: ''
 groups: {  }
 api_tokens_valid_after: 1791211484
-hashed_password: $2y$12$45h0gOO3UlqIqm8rdN43NOKcmay/4QeuyNvLt2QMTqXNnjOB57p9S
-# password: Kernel#Tux26
-password: Kernel#Tux26
+hashed_password: $2y$12$XuPpOEXX7vroz6tTGcNqNO3mbZLKtzDuiOMqrx/HCOZ52PbgazIdC
