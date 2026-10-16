@@ -1,62 +1,62 @@
 {% extends 'partials/base.html.twig' %}
 
 {% block body %}
-<div class="hx-shell">
-    {% include 'partials/sidebar.html.twig' %}
+    <div class="hx-shell">
+        {% include 'partials/sidebar.html.twig' %}
 
-    <main class="hx-main">
-        <div class="hx-article-wrap">
-            <article class="hx-article">
-                <nav class="hx-breadcrumbs" aria-label="breadcrumb">
-                    <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
-                    {% for crumb in page.parents|reverse %}
-                        {% if not crumb.root and not crumb.home %}
-                            <span>/</span><a href="{{ crumb.url }}">{{ crumb.menu }}</a>
-                        {% endif %}
-                    {% endfor %}
-                    <span>/</span><span class="current">{{ page.menu }}</span>
-                </nav>
-
-                <h1 class="hx-title">{{ page.title }}</h1>
-                {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
-
-                <div class="doc-content" id="docContent">
-                    {{ page.content|raw }}
-                </div>
-
-               {% if page.children.visible.count %}
-                    <div class="row g-3 mt-3 hx-child-cards chapter-card">
-                        {% for child in page.children.visible %}
-                            <div class="col-sm-12  col-lg-4 card-{{ loop.index is odd ? 'odd' : 'even' }}">
-                                <a href="{{ child.url }}" class="hx-card d-block h-100">
-                                    {# ZMIANA: Dodano loop.index obok tytułu #}
-                                    <h3 class="mt-0">
-                                        <span class="opacity-50 me-1">{{ loop.index }}.</span>{{ child.title }}
-                                    </h3>
-                                    {# <p>{{ child.header.lead ?: child.summary|striptags|trim|slice(0, 120) }}</p> #}
-                                </a>
-                            </div>
+        <main class="hx-main">
+            <div class="hx-article-wrap">
+                <article class="hx-article">
+                    <nav class="hx-breadcrumbs" aria-label="breadcrumb">
+                        <a href="{{ base_url == '' ? '/' : base_url }}">Start</a>
+                        {% for crumb in page.parents|reverse %}
+                            {% if not crumb.root and not crumb.home %}
+                                <span>/</span><a href="{{ crumb.url }}">{{ crumb.menu }}</a>
+                            {% endif %}
                         {% endfor %}
+                        <span>/</span><span class="current">{{ page.menu }}</span>
+                    </nav>
+
+                    <h1 class="hx-title">{{ page.title }}</h1>
+                    {% if page.header.lead %}<p class="hx-lead">{{ page.header.lead }}</p>{% endif %}
+
+                    <div class="doc-content" id="docContent">
+                        {{ page.content|raw }}
                     </div>
-                {% endif %}
 
-                <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
-                    <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>
-                    {% if config.theme.github_edit_url %}
-                        <a href="{{ config.theme.github_edit_url|trim('/', 'right') }}{{ page.relativePagePath }}" target="_blank" rel="noopener">Edytuj tę stronę na GitHubie ↗</a>
+                    {% if page.children.visible.count %}
+                        <div class="row g-3 mt-3 hx-child-cards chapter-card">
+                            {% for child in page.children.visible %}
+                                <div class="col-sm-12  col-lg-4 card-{{ loop.index is odd ? 'odd' : 'even' }}">
+                                    <a href="{{ child.url }}" class="hx-card d-block h-100">
+                                        {# ZMIANA: Dodano loop.index obok tytułu #}
+                                        <h3 class="mt-0">
+                                            <span class="opacity-50 me-1">{{ loop.index }}.</span>{{ child.title }}
+                                        </h3>
+                                        {# <p>{{ child.header.lead ?: child.summary|striptags|trim|slice(0, 120) }}</p> #}
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% endif %}
-                </div>
 
-                {% include 'partials/footer.html.twig' %}
-            </article>
+                    <div class="hx-meta d-flex flex-wrap justify-content-between gap-2">
+                        <span>Ostatnia aktualizacja: {{ page.modified|date('d.m.Y') }}</span>
+                        {% if config.theme.github_edit_url %}
+                            <a href="{{ config.theme.github_edit_url|trim('/', 'right') }}{{ page.relativePagePath }}" target="_blank" rel="noopener">Edytuj tę stronę na GitHubie ↗</a>
+                        {% endif %}
+                    </div>
 
-            <aside class="hx-toc d-none d-xl-block">
-                <div class="hx-toc-inner">
-                    <div class="hx-toc-title">Na tej stronie</div>
-                    <ul class="list-unstyled mb-0" id="hxToc"></ul>
-                </div>
-            </aside>
-        </div>
-    </main>
-</div>
+                    {% include 'partials/footer.html.twig' %}
+                </article>
+
+                <aside class="hx-toc d-none d-xl-block">
+                    <div class="hx-toc-inner">
+                        <div class="hx-toc-title">Na tej stronie</div>
+                        <ul class="list-unstyled mb-0" id="hxToc"></ul>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
 {% endblock %}
