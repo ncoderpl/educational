@@ -33,7 +33,7 @@
                                     <h3 class="mt-0">
                                         <span class="opacity-50 me-1">{{ loop.index }}.</span>{{ child.title }}
                                     </h3>
-                                    <p>{{ child.header.lead ?: child.summary|striptags|trim|slice(0, 120) }}</p>
+                                    {# <p>{{ child.header.lead ?: child.summary|striptags|trim|slice(0, 120) }}</p> #}
                                 </a>
                             </div>
                         {% endfor %}
