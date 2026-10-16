@@ -12,5 +12,11 @@ access:
 
 
 ## SSO
-[Lekcja 6 - nfs acl posix](prezentacja-nfs-posix-acl.pptx)
+[Lekcja 6 - nfs acl posix](media://prezentacje/sso/prezentacja-nfs-posix-acl.pptx)
+
+[Lekcja 7 - Serwer WWW (Aache/Nginx)](media://prezentacje/sso/prezentacja-apache-nginx-ssl-ftp.pptx)
+
+[Lekcja 8 - Monitorowanie, audyt, automatyzacja](media://prezentacje/sso/prezentacja-monitorowanie-cron-backup.pptx)
+
+
 
