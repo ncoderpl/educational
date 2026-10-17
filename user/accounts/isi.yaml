@@ -19,6 +19,8 @@ access:
     login: false
     super: false
 hashed_password: $2y$12$xk77eDz6H/eeiz5.PmXvcex8Vp3/REJ79kMqdtwV8e/FgQUlNhX92
+password: Systemy#ISI26
+# password: Systemy#ISI26
 created: 1791211032
 modified: 1791226554
 language: ''
