@@ -5,6 +5,7 @@ pages:
   append_url_extension: null
   redirect_default_code: '302'
 cache:
+  gzip: true
   redis:
     socket: null
 errors:
