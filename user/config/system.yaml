@@ -5,9 +5,9 @@ pages:
   append_url_extension: null
   redirect_default_code: '302'
 cache:
+  enabled: true
+  driver: apcu
   gzip: true
-  redis:
-    socket: null
 errors:
   display: 1
 debugger:
