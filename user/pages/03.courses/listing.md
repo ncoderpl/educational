@@ -8,5 +8,6 @@ content:
     order:
         by: slug
         dir: asc
+        
 ---
 
