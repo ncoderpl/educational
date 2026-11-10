@@ -13,6 +13,8 @@ access:
 
 [mysql_silniki_i_kodowanie.pptx](media://prezentacje/mysql/mysql_silniki_i_kodowanie.pptx)
 
+[MySQL-typy-danych.pptx](media://prezentacje/mysql/MySQL-typy-danych.pptx)
+
 ## SSO
 [Lekcja 6 - nfs acl posix](media://prezentacje/sso/prezentacja-nfs-posix-acl.pptx)
 
