@@ -100,6 +100,9 @@ ICU:
       PRESET_COMPACT: Compact
       PRESET_COMPACT_DESC: All widgets at the smallest size each supports.
     PAGES:
+      DROP_INSIDE: Drop a page here to move it inside {title}
+      SHOW_DROP_INSIDE: Move pages inside {title}
+      MOVE_UNNUMBERED_KEEPS_NAME_ORDER: "{title} has no order number, so it stays sorted by name"
       TITLE: Pages
       SEARCH_PLACEHOLDER: Search pages...
       NO_PAGES: No pages found
@@ -112,7 +115,6 @@ ICU:
       STATS_TOTAL: "{n} total"
       STATS_PUBLISHED: "{n} published"
       STATS_UNPUBLISHED: "{n} unpublished"
-      REORDER_SAME_PARENT: Can only reorder pages under the same parent. Use Tree view for cross-parent moves.
       MOVED: Moved "{title}"
       REORDERED: Reordered "{title}"
       MOVE_FAILED: Failed to move page
@@ -141,8 +143,6 @@ ICU:
       CHUNK_SIZE_HELP: Rows to fetch per request as you scroll. Larger values load slower the first time but reduce follow-up requests.
       LOADING_CHUNK: Loading rows {from}–{to}…
       LOADED_OF: '{n, plural, one {# loaded} other {# loaded}} of {total}'
-      REORDER_LOADING: Still loading the full list — try again in a moment.
-      REORDER_LOADING_ALL: Loading every chunk so reorder can affect the whole list…
       NO_MATCH: No pages match your search
       SEARCH_MATCH_COUNT: '{n, plural, one {# match} other {# matches}} across all pages'
       SEARCH_SHOWING: Showing {shown} of {total} matches
@@ -152,7 +152,6 @@ ICU:
       HEADER_TEMPLATE: Template
       HEADER_STATUS: Status
       HEADER_MODIFIED: Modified
-      HEADER_PARENT: Parent
       PUBLISHED: Published
       DRAFT: Draft
       PUBLISH: Publish
@@ -440,6 +439,8 @@ ICU:
       INVALID_JSON_DETAIL: "The server's reply could not be read because it is not valid JSON. Something on the server may be printing extra output, such as a PHP warning, alongside the API response. The browser console has the details."
       UNEXPECTED_RESPONSE_TITLE: Unexpected response from the server
       UNEXPECTED_RESPONSE_DETAIL: The server replied with data in a format this screen does not expect. The browser console has the details.
+      SERVER_PAGE_TITLE: Blocked by the web server
+      SERVER_PAGE_DETAIL: "Your web server answered this request itself (HTTP {status}) instead of passing it to Grav. A security filter on the server, such as mod_security or a hosting firewall, may have blocked it. Your host or the server's error log can tell you which rule fired."
     API_KEYS_FIELD:
       REVOKE_KEY: Revoke key
       E_G_MY_CLI_TOOL: e.g. My CLI Tool
@@ -466,6 +467,8 @@ ICU:
       CLOSE_MENU: Close menu
       GRAV_VERSION: Grav v{version}
       ADMIN_VERSION: Admin v{version}
+      MADE_BY: Grav was {code} with {love} by {company}.
+      MADE_BY_PLAIN: Grav was coded with love by Trilby Media
     NORMAL_MODE: Normal mode
     EXPERT_MODE: Expert mode
     ALLOWED: Allowed
@@ -608,6 +611,16 @@ ICU:
     FLOATING_WIDGET_LOADER:
       CLOSE_WIDGETS_MENU: Close widgets menu
     MEDIA:
+      # Images pasted or dropped into a page's content editor (markdown or
+      # Editor Pro) are uploaded to the page media (grav-premium-issues#628).
+      PASTE_UPLOAD:
+        UPLOADING: '{count, plural, one {Uploading image…} other {Uploading # images…}}'
+        UPLOADED: '{count, plural, one {Image added to the page media} other {# images added to the page media}}'
+        FAILED: "Couldn't upload {filename}: {message}"
+        UNSUPPORTED_TYPE: "{filename} can't be added here. Paste or drop a PNG, JPEG, GIF, WebP, AVIF or SVG image."
+        SAVE_PAGE_FIRST: Save the page first, then paste or drop images into it.
+        PAGES_ONLY: Pasting or dropping images works in page content only. Upload the image to the media manager and insert it from there.
+        NO_PERMISSION: You don't have permission to upload media, so the image wasn't added.
       FILE_DETAILS:
         TITLE: File details
         PATH: Path
@@ -1066,6 +1079,32 @@ ICU:
         RESET_MESSAGE: "This removes every override on {scope} and restores the inherited values. This cannot be undone."
         RESET_CONFIRM: Reset
         RESET_DONE: Overrides reset
+      SHADOWED:
+        MARKER_ENV: "Overridden by the {env} environment"
+        MARKER_SERVER: Set by a server environment variable
+        EXPLAIN_ENV: "The {env} environment sets this in its own config file, so what you save here won't apply on this site."
+        EXPLAIN_SERVER: A GRAV_CONFIG server environment variable sets this, so what you save here won't apply.
+        ENABLED_ENV: "Set by the {env} environment"
+        ENABLED_SERVER: Set by a server environment variable
+        ENABLED_EXPLAIN_ENV: "The {env} environment turns this plugin on or off in its own config file, so the switch here won't change what the site does."
+        ENABLED_EXPLAIN_SERVER: A GRAV_CONFIG server environment variable turns this plugin on or off, so the switch here won't change what the site does.
+        SITE_USES: This site uses
+        VALUE_ON: 'on'
+        VALUE_OFF: 'off'
+        REMOVE_OVERRIDE: Remove override
+        SWITCH_TO: "Switch to {env}"
+        REMOVED: "Override removed from the {env} environment"
+        REMOVE_FAILED: Could not remove the override
+        BANNER_ENV: "{count, plural, one {# setting here is} other {# settings here are}} overridden by the {env} environment, so changes to {count, plural, one {it} other {them}} won't take effect."
+        BANNER_SERVER: "{count, plural, one {# setting here is} other {# settings here are}} set by server environment variables, so changes to {count, plural, one {it} other {them}} won't take effect."
+        BANNER_MIXED: "{count, plural, one {# setting here is} other {# settings here are}} overridden by the {env} environment or by server environment variables, so changes to {count, plural, one {it} other {them}} won't take effect."
+        SAVED_ENV: "Saved, but {field} is overridden by the {env} environment, so the site still uses \"{value}\"."
+        SAVED_SERVER: "Saved, but {field} is set by a server environment variable, so the site still uses \"{value}\"."
+        SAVED_MANY_ENV: "Saved, but {count} of these changes are overridden by the {env} environment, so the site won't use them."
+        SAVED_MANY_SERVER: "Saved, but {count} of these changes are set by server environment variables, so the site won't use them."
+        SAVED_MANY_MIXED: "Saved, but {count} of these changes are overridden by the {env} environment or by server environment variables, so the site won't use them."
+        TOGGLE_ENV: "Saved, but the {env} environment keeps {name} {state, select, off {disabled} other {enabled}}."
+        TOGGLE_SERVER: "Saved, but a server environment variable keeps {name} {state, select, off {disabled} other {enabled}}."
     FLEX_OBJECTS:
       ADD: Add
       SEARCH: Search...
@@ -1331,6 +1370,8 @@ ICU:
       LOGIN_SUBTITLE_DESC: Optional line shown under the sign-in heading.
       SHOW_POWERED_BY: Show "Powered by Grav"
       SHOW_POWERED_BY_DESC: Show the "Powered by Grav CMS" line on the sign-in and setup screens.
+      SHOW_CREDIT: Show Trilby Media credit
+      SHOW_CREDIT_DESC: Show the "Grav was coded with love by Trilby Media" line at the bottom of the sidebar.
       FAVICON: Favicon
       FAVICON_DESC: Custom browser-tab icon (SVG, PNG, WebP, or ICO). Leave blank for the generated icon.
       FAVICON_UPLOADED: Favicon uploaded.
@@ -1414,6 +1455,12 @@ ICU:
       FAILED_TO_SAVE_USER: Failed to save user.
       YOU_CANNOT_DELETE_YOUR_OWN_ACCOUNT: You cannot delete your own account.
       USER_CHANGED_ELSEWHERE_SAVE_TO: User changed elsewhere — save to overwrite or reload
+      EMAIL_CHANGE_WAITING: 'Waiting for confirmation: {email}'
+      EMAIL_CHANGE_RESEND: Resend
+      EMAIL_CHANGE_SENT: 'We sent a confirmation link to {email}. The email address changes once the link is opened.'
+      EMAIL_CHANGE_CANCELLED: Email change cancelled.
+      EMAIL_CHANGE_RESEND_FAILED: Failed to resend the confirmation link.
+      EMAIL_CHANGE_CANCEL_FAILED: Failed to cancel the email change.
       BACK_TO_USERS: Back to Users
       2_FACTOR_AUTHENTICATION: 2-Factor Authentication
       NEW:
@@ -1877,6 +1924,22 @@ ICU:
     IMAGES_CLS_AUTO_SIZES_HELP: Automatically add 'width' and 'height' attributes to images to address CLS
     IMAGES_CLS_RETINA_SCALE: Retina Scale Factor
     IMAGES_CLS_RETINA_SCALE_HELP: Will take the calculated size and divide by scale factor to display a higher resolution image at a smaller pixel size for better handling of HiDPI resolutions
+    IMAGES_WATERMARK_TITLE: Watermark
+    IMAGES_WATERMARK_ALL: Watermark all images
+    IMAGES_WATERMARK_ALL_HELP: Automatically stamp the watermark on every image the site serves
+    IMAGES_WATERMARK_IMAGE: Watermark image
+    IMAGES_WATERMARK_IMAGE_HELP: Path to the image used as the watermark, such as system://images/watermark.png
+    IMAGES_WATERMARK_POSITION_Y: Vertical position
+    IMAGES_WATERMARK_POSITION_Y_HELP: Where the watermark sits from top to bottom
+    IMAGES_WATERMARK_POSITION_X: Horizontal position
+    IMAGES_WATERMARK_POSITION_X_HELP: Where the watermark sits from left to right
+    IMAGES_WATERMARK_SCALE: Watermark scale
+    IMAGES_WATERMARK_SCALE_HELP: Size of the watermark as a percentage of the image
+    IMAGES_WATERMARK_TOP: Top
+    IMAGES_WATERMARK_CENTER: Center
+    IMAGES_WATERMARK_BOTTOM: Bottom
+    IMAGES_WATERMARK_LEFT: Left
+    IMAGES_WATERMARK_RIGHT: Right
     IMAGES_CLS_TITLE: Cumulative Layout Shift (CLS)
     IMAGES_DEBUG: Image debug watermark
     IMAGES_DEBUG_HELP: Show an overlay over images indicating the pixel depth of the image when working with retina for example
@@ -2008,6 +2071,8 @@ ICU:
     PARENT: Parent
     PASSWORD_VALIDATION_MESSAGE: Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters
     PERMISSIONS: Permissions
+    PIPELINE_REMOTE_TIMEOUT: Remote asset timeout
+    PIPELINE_REMOTE_TIMEOUT_HELP: How long to wait for a remote CSS or JS file (a CDN stylesheet, for example) when building a pipeline. If it doesn't arrive in time, the page renders without bundling that group and tries again on the next request
     PLUGIN_STATUS: Plugin status
     PROCESS: Process
     PROCESS_HELP: Control how pages are processed. Can be set per-page rather than globally

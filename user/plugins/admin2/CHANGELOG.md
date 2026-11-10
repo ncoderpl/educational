@@ -1,3 +1,75 @@
+# v2.1.37
+## 10/19/2026
+
+1. [](#improved)
+    * Images pasted or dropped into a page's content editor are now uploaded to the page's media and linked, with names like `image-k3x9a2bq.png`, instead of inserting a link to a file that was never uploaded. Editor Pro 2.0.17 uses the same upload [grav-premium-issues#628](https://github.com/getgrav/grav-premium-issues/issues/628)
+2. [](#bugfix)
+    * A Markdown or code (YAML) field now shows its new value when a plugin updates the record and the edit screen refreshes in place, instead of keeping the old text until a page reload. Text typed while a page save is still running is kept in the editor [#198](https://github.com/getgrav/grav-plugin-admin2/issues/198)
+    * Clicking the empty space below the last line of the frontmatter editor in Expert mode now places the cursor there in Firefox and Safari too [#61](https://github.com/getgrav/grav-plugin-admin2/issues/61)
+    * When the web server or a security filter on it (such as mod_security) blocks a save and answers with its own error page, the message now says so instead of only "Request failed with status 418" [getgrav/grav#4362](https://github.com/getgrav/grav/issues/4362)
+
+# v2.1.36
+## 10/17/2026
+
+1. [](#new)
+    * A "Grav was coded with love by Trilby Media" credit at the bottom of the sidebar, which can be turned off under Settings → Branding. Requires API plugin 1.0.52
+2. [](#improved)
+    * The sidebar stays collapsed after a reload once you've collapsed it
+    * The debug button sits beside the sidebar instead of over its footer
+
+# v2.1.35
+## 10/16/2026
+
+1. [](#new)
+    * Label and help text for Grav's new **Remote asset timeout** setting under Configuration → System → Assets
+    * A plugin's own buttons and panels can now update the record you're editing and the form refreshes in place, with no page reload. Plugin code calls the API through the new `window.__GRAV_API` [#197](https://github.com/getgrav/grav-plugin-admin2/issues/197)
+2. [](#bugfix)
+    * The Folder Name field on a page's Advanced tab shows the page's folder again instead of its `slug:` override, and moving or renumbering such a page keeps its folder name. Requires API plugin 1.0.51 for moves made from the page tree [getgrav/grav-admin-next#40](https://github.com/getgrav/grav-admin-next/issues/40)
+    * With live collaboration on, reopening a page after reordering it in the page tree no longer offers to save it, and saving it no longer moves it back to its old position [getgrav/grav#4361](https://github.com/getgrav/grav/issues/4361)
+
+# v2.1.34
+## 10/15/2026
+
+1. [](#new)
+    * A plugin page can now have its own address for each view, such as `/plugin/shop/orders` and `/plugin/shop/customers`, so each view can have its own sidebar entry and bookmarkable link. The plugin's page stays loaded while you move between views and is told which view is showing [#196](https://github.com/getgrav/grav-plugin-admin2/issues/196)
+2. [](#bugfix)
+    * Sidebar links to one plugin page that differ only by a query string, such as `?view=orders` and `?view=customers`, are now highlighted one at a time instead of all at once [#196](https://github.com/getgrav/grav-plugin-admin2/issues/196)
+
+# v2.1.33
+## 10/14/2026
+
+1. [](#new)
+    * Settings that the site's environment folder or a server variable overrides are now marked, with a note at the top of the form, so it's clear when a change saved under Default won't take effect. Saving one of them, or switching a plugin on or off when its environment says otherwise, shows a warning with a Remove override button, and the switch keeps showing what the site actually does. Requires API plugin 1.0.50 [getgrav/grav-plugin-sync-mercure#1](https://github.com/getgrav/grav-plugin-sync-mercure/issues/1)
+    * A user's email change that is waiting for confirmation now shows under the email field with Resend and Cancel buttons, and saving a new address for your own account says a confirmation link was sent
+2. [](#bugfix)
+    * The Add Plugin dialog no longer gets stuck on a spinner when the plugin directory comes back with a plugin listed twice, and the Install button no longer installs a plugin you never saw [getgrav/grav-admin-next#38](https://github.com/getgrav/grav-admin-next/issues/38)
+    * A plugin's sidebar link is no longer highlighted on another plugin's page whose name starts the same way, such as `foo` on `foo-bar` [#195](https://github.com/getgrav/grav-plugin-admin2/issues/195)
+    * The scheduler webhook examples under Tools → Scheduler now use the `X-Webhook-Token` header the Scheduler Webhook plugin expects, so copied commands no longer fail with "Invalid authorization token" [getgrav/grav-plugin-scheduler-webhook#8](https://github.com/getgrav/grav-plugin-scheduler-webhook/issues/8)
+    * In the Pages Columns view, the preview pane updates after you publish or unpublish a page, so the toggle works on every click instead of only the first. Thanks @fdruide [getgrav/grav-admin-next#39](https://github.com/getgrav/grav-admin-next/pull/39)
+
+# v2.1.32
+## 10/14/2026
+
+1. [](#bugfix)
+    * Requires API plugin 1.0.49, which fixes "Save as <language>" failing with `Invalid input in "Subtitle"` when a modular section's subtitle has more than one paragraph
+
+# v2.1.31
+## 10/13/2026
+
+1. [](#improved)
+    * The page editor's address now carries the content language, like `?lang=fr-fr`. A copied link, or an "Edit this page" link, opens that translation instead of whichever language is remembered in the visitor's browser, as it did in Grav 1.7. Switching language adds a history entry, so Back returns to the previous language. Thanks @fdruide [getgrav/grav-admin-next#37](https://github.com/getgrav/grav-admin-next/pull/37)
+
+# v2.1.30
+## 10/13/2026
+
+1. [](#bugfix)
+    * Creating a translation of a page that only exists in another language keeps the page's template, instead of falling back to the default template. Thanks @fdruide [#193](https://github.com/getgrav/grav-plugin-admin2/issues/193) [getgrav/grav-admin-next#35](https://github.com/getgrav/grav-admin-next/pull/35)
+    * Moving pages in the Tree and Columns views now works across levels, such as moving a child page up next to its parent. Move mode has drop zones at the start and end of every folder and inside pages that have no children, and it no longer adds order numbers to pages that don't have one. Thanks @Gleydar [getgrav/grav-admin-next#36](https://github.com/getgrav/grav-admin-next/issues/36)
+    * The Pages list view refreshes after a page changes, instead of staying on "Loading pages...", and Move mode is no longer offered there because a flat list can't show where a page moves
+2. [](#improved)
+    * A media file's details dialog shows a dropdown for metadata fields that a plugin defines as a select
+    * Image watermark settings (image, position, scale and watermark all) can be edited under Configuration, Images
+
 # v2.1.29
 ## 10/09/2026
 

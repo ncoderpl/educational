@@ -1,6 +1,6 @@
 state: enabled
 email: eup@eup.eup
-fullname: 'EUP'
+fullname: EUP
 title: ''
 access:
   site:
@@ -24,6 +24,4 @@ language: ''
 content_editor: ''
 groups: {  }
 api_tokens_valid_after: 1791211484
-hashed_password: $2y$12$45h0gOO3UlqIqm8rdN43NOKcmay/4QeuyNvLt2QMTqXNnjOB57p9S
-# password: Sprzet#EUP26
-password: Sprzet#EUP26
+hashed_password: $2y$12$NtdppRelQkpHB8yxOoXpbOIML1tFqv./NPad0/RtFd8gAIeDB2gJq

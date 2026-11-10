@@ -1,3 +1,58 @@
+# v1.0.53
+## 10/19/2026
+
+1. [](#bugfix)
+    * On pages, a file removed from a file field no longer comes back after saving, and a new upload to a `self@` file field is recorded with the page's real folder (`01.home`) so it shows on the site. Thanks @sami [#62](https://github.com/getgrav/grav-plugin-api/pull/62)
+
+# v1.0.52
+## 10/17/2026
+
+1. [](#new)
+    * Admin2 branding has a new setting to hide the "Grav was coded with love by Trilby Media" credit at the bottom of the sidebar. It's on by default
+
+# v1.0.51
+## 10/16/2026
+
+1. [](#improved)
+    * Editable Metadata Fields in the API settings can now be set up as Select fields, with their options entered in the form instead of by editing `api.yaml` by hand. Thanks to [@phmg701](https://github.com/phmg701) for finding it and working out the change [#40](https://github.com/getgrav/grav-plugin-api/issues/40)
+2. [](#bugfix)
+    * `bin/plugin api keys:revoke` revokes the key you pick from the list again, instead of failing with "No key ID provided" [#60](https://github.com/getgrav/grav-plugin-api/issues/60)
+    * Moving, renumbering or reordering a page that has a `slug:` in its frontmatter no longer renames its folder after the slug [getgrav/grav-admin-next#40](https://github.com/getgrav/grav-admin-next/issues/40)
+
+# v1.0.50
+## 10/14/2026
+
+1. [](#new)
+    * Settings and plugin details now say when a value is overridden by the site's environment folder or by a server variable, so Admin2 can warn that a change saved under Default won't take effect, and the environment's copy can be removed with the existing revert request [getgrav/grav-plugin-sync-mercure#1](https://github.com/getgrav/grav-plugin-sync-mercure/issues/1)
+    * Plugins with their own settings pages can now save to the environment picked in Admin2 through a shared helper, storing only the values that differ from the layer beneath it
+    * Changing your own email through `PATCH /users/{username}` now waits for confirmation when the Login plugin (3.10.0 or later) confirms email changes. The new address is kept as `email_pending`, a link goes to it, and `email` changes once the link is opened, whatever permissions the account has. The response carries `email_pending` and a `meta.message`. Other fields in the same request still save, an admin changing someone else's address saves it at once, and sites without the Login plugin or with the setting off behave as before. `DELETE /users/{username}/email-change` cancels a waiting change and `POST /users/{username}/email-change/resend` mails the link again
+2. [](#bugfix)
+    * Adding an environment folder such as `user/env/<host>/` no longer signs everyone out of Admin2. The API's signing secret stays in `user/config`, and a copy an earlier version put in an environment folder is moved there
+    * The Add Plugin dialog in Admin2 loads again on sites whose API settings still carry the old 100-item page limit, instead of spinning forever. Each page of the plugin and theme directory now starts where the previous one ended, so no plugin is listed twice [getgrav/grav-admin-next#38](https://github.com/getgrav/grav-admin-next/issues/38)
+    * Admin2 pages no longer fail with "Decoding failed" when a theme or plugin file prints a stray blank line or byte-order mark. The API now sends those responses uncompressed instead of sending compressed data the browser can't read [getgrav/grav-plugin-admin#2524](https://github.com/getgrav/grav-plugin-admin/issues/2524)
+
+# v1.0.49
+## 10/14/2026
+
+1. [](#bugfix)
+    * Creating a translation of a modular section (such as the features hero) no longer fails with `Invalid input in "Subtitle"` when the source subtitle has more than one paragraph. Creating and translating a page now validate against the blueprint of the page's real template, not the `default` blueprint that a not-yet-saved `<template>.<lang>.md` file fell back to
+
+# v1.0.48
+## 10/13/2026
+
+1. [](#bugfix)
+    * Deleting a single translation of a modular page (a module such as a features or pricing section) no longer fails with "Could not locate the language file", and removes only that language
+
+# v1.0.47
+## 10/13/2026
+
+1. [](#improved)
+    * Added a Spanish translation, and the plugin's settings labels, help text and options can now be translated. Thanks @pmoreno-rodriguez [#58](https://github.com/getgrav/grav-plugin-api/pull/58)
+    * Media metadata fields can be a dropdown, with `type: select` and a list of `options`
+1. [](#bugfix)
+    * Creating a translation of a page whose source is not in the default language keeps the page's template, content and title when the request names the source language with `source_lang`. Thanks @fdruide [#59](https://github.com/getgrav/grav-plugin-api/pull/59) [getgrav/grav-plugin-admin2#193](https://github.com/getgrav/grav-plugin-admin2/issues/193)
+    * Moving a page to another level with the reorganize endpoint no longer reports success while leaving it in place or fails halfway: moves that change nothing are skipped, and a page moved into another folder takes that folder's order number width. Thanks @Gleydar [getgrav/grav-admin-next#36](https://github.com/getgrav/grav-admin-next/issues/36)
+
 # v1.0.46
 ## 10/09/2026
 
